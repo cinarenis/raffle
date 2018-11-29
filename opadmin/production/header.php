@@ -16,7 +16,9 @@ $ayarcek=$ayarsor->fetch(PDO::FETCH_ASSOC);
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-
+	<meta name="description" content="<?php echo $ayarcek['ayar_description']; ?>">
+    <meta name="keywords" content="<?php echo $ayarcek['ayar_keywords']; ?>">
+    <meta name="author" content="<?php echo $ayarcek['ayar_author']; ?>">
 	<title><?php echo $ayarcek['ayar_title'] ?> Admin Panel</title>
 
 	<!-- Bootstrap -->
