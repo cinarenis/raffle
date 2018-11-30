@@ -35,6 +35,8 @@ $ayarcek=$ayarsor->fetch(PDO::FETCH_ASSOC);
 	<link href="../vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
 	<link href="../vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
 	<link href="../vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
+	<!-- CK Editör -->
+	<script src="https://cdn.ckeditor.com/4.11.1/standard/ckeditor.js"></script>
 
 	<!-- Custom Theme Style -->
 	<link href="../build/css/custom.min.css" rel="stylesheet">
