@@ -1,0 +1,16 @@
+RewriteEngine on
+#HTTPS yönlendirmesi
+#RewriteCond %{SERVER_PORT} 80
+#RewriteRule ^(.*)$ http://site_adi.com/$1 [R,L]
+
+#eniscinar.com yazdığımızda www.eniscinar.com'a' yönlenmesi
+#RewriteCond %{HTTP_HOST} ^site_adi.com. [NC]
+#RewriteRule ^(.*)$ http://site_adi.com/$1 [L,R=301,NC]
+
+#Seo URL Oluşturma mesela eniscinar.com/hakkimizda.php yerine eniscinar.com/hakkimizda
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^(.*)$ $1.php
+
+#404 hata sayfası yönlendirme kodu bulunamayan sayfalarda aşağıdaki linke gitmesini sağlıyor.
+#ErrorDocument 404 http://site_adi.com/404.html
