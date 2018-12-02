@@ -1,7 +1,7 @@
 <?php 
 include 'header.php'; 
-$kullanicisor=$db->prepare("SELECT * FROM kullanici");
-$kullanicisor->execute();
+$menusor=$db->prepare("SELECT * FROM menu");
+$menusor->execute();
 
 ?>
 <!-- page content -->
@@ -12,7 +12,7 @@ $kullanicisor->execute();
       <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="x_panel">
           <div class="x_title">
-            <h2>Kullanıcı Listeleme <small>,
+            <h2>Menü Listeleme <small>,
               <?php 
               if ($_GET['durum']=="ok") {?>
                 <b style="color:green;">İşlem Başarılı...</b>
@@ -24,6 +24,11 @@ $kullanicisor->execute();
               <?php } elseif ($_GET['sil']=="no") {?>
                 <b style="color:red;">Silme Başarısız...</b>
               <?php }
+              if ($_GET['ekle']=="ok") {?>
+                <b style="color:green;">Ekleme Başarılı...</b>
+              <?php } elseif ($_GET['ekle']=="no") {?>
+                <b style="color:red;">Ekleme Başarısız...</b>
+              <?php }
               ?>
             </small></h2>
             <ul class="nav navbar-right panel_toolbox">
@@ -33,6 +38,9 @@ $kullanicisor->execute();
               </li>
             </ul>
             <div class="clearfix"></div>
+            <div align="right">
+            <a href="menu-ekle.php"><button class="btn btn-success btn-xs">Yeni Ekle</button></a>
+            </div>
           </div>
           <div class="x_content">
             <!-- Div İçerik Başlangıç -->
@@ -40,10 +48,10 @@ $kullanicisor->execute();
               <thead>
                 <tr>
                   <th>S.No</th>
-                  <th>Kayıt Tarih</th>
-                  <th>Ad Soyad</th>
-                  <th>Mail Adresi</th>
-                  <th>Telefon</th>
+                  <th>Menü Adı</th>
+                  <th>Menü URL</th>
+                  <th>Menü Sıra</th>
+                  <th>Menü Durum</th>
                   <th>Düzenle</th>
                   <th>Sil</th>
                 </tr>
@@ -51,15 +59,21 @@ $kullanicisor->execute();
               <tbody>
                 <?php 
                 $say = 0;
-                while($kullanicicek=$kullanicisor->fetch(PDO::FETCH_ASSOC)) { $say++ ?>
+                while($menucek=$menusor->fetch(PDO::FETCH_ASSOC)) { $say++ ?>
                   <tr>
                     <td width="15px"><center><?php echo $say; ?></center></td>
-                    <td><?php echo $kullanicicek['kullanici_zaman']; ?></td>
-                    <td><?php echo $kullanicicek['kullanici_adsoyad']; ?></td>
-                    <td><?php echo $kullanicicek['kullanici_mail']; ?></td>
-                    <td><?php echo $kullanicicek['kullanici_tel']; ?></td>
-                    <td><center><a href="kullanici-duzenle.php?kullanici_id=<?php echo $kullanicicek['kullanici_id']; ?>"><button class="btn btn-primary btn-xs">Düzenle</button></a></center></td>
-                    <td><center><a href="../raffle/islem.php?kullanici_id=<?php echo $kullanicicek['kullanici_id']; ?>&kullanicisil=ok"><button class="btn btn-danger btn-xs">Sil</button></a></center></td>
+                    <td><?php echo $menucek['menu_ad']; ?></td>
+                    <td><?php echo $menucek['menu_url']; ?></td>
+                    <td><?php echo $menucek['menu_sira']; ?></td>
+                    <td><?php 
+                    if ($menucek['menu_durum'] == 1) { ?>
+                      <center><button class="btn btn-success btn-xs">Aktif</button></center>
+                     <?php } else{ ?>
+                      <center><button class="btn btn-danger btn-xs">Pasif</button></center>
+                     <?php } ?>
+                    </td>
+                    <td><center><a href="menu-duzenle.php?menu_id=<?php echo $menucek['menu_id']; ?>"><button class="btn btn-primary btn-xs">Düzenle</button></a></center></td>
+                    <td><center><a href="../raffle/islem.php?menu_id=<?php echo $menucek['menu_id']; ?>&menusil=ok"><button class="btn btn-danger btn-xs">Sil</button></a></center></td>
                   </tr>
                 <?php  }
                 ?>
