@@ -160,4 +160,32 @@ if (isset($_POST['hakkimizdakaydet'])) {
 	}
 }
 
+if (isset($_POST['kullaniciduzenle'])) {
+	$kullanici_id = $_POST['kullanici_id'];
+	$ayarkaydet=$db->prepare("UPDATE kullanici SET
+		kullanici_tc=:kullanici_tc,
+		kullanici_adsoyad=:kullanici_adsoyad,
+		kullanici_tel=:kullanici_tel,
+		kullanici_adres=:kullanici_adres,
+		kullanici_il=:kullanici_il,
+		kullanici_ilce=:kullanici_ilce,
+		kullanici_durum=:kullanici_durum
+		WHERE kullanici_id={$_POST['kullanici_id']}");
+	$update=$ayarkaydet->execute(array(
+		'kullanici_tc' => $_POST['kullanici_tc'],
+		'kullanici_adsoyad' => $_POST['kullanici_adsoyad'],
+		'kullanici_tel' => $_POST['kullanici_tel'],
+		'kullanici_adres' => $_POST['kullanici_adres'],
+		'kullanici_il' => $_POST['kullanici_il'],
+		'kullanici_ilce' => $_POST['kullanici_ilce'],
+		'kullanici_durum' => $_POST['kullanici_durum']
+	));
+
+	if($update) {
+		header("Location:../production/kullanici-duzenle.php?kullanici_id=$kullanici_id&durum=ok");
+	} else {
+		header("Location:../production/kullanici-duzenle.php?kullanici_id=$kullanici_id&durum=no");
+	}
+}
+
 ?>
