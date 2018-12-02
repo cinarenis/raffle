@@ -13,7 +13,12 @@ $kullanicisor=$db->prepare("Select * FROM kullanici WHERE kullanici_mail=:mail")
 $kullanicisor->execute(array(
 	'mail' => $_SESSION['kullanici_mail']
 ));
+$say=$kullanicisor->rowCount();
 $kullanicicek=$kullanicisor->fetch(PDO::FETCH_ASSOC);
+
+if ($say==0) {
+	header('Location:login.php?durum=izinsiz');
+}
 
 ?>
 <!DOCTYPE html>
