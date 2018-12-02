@@ -1,4 +1,6 @@
 <?php 
+ob_start();
+session_start();
 include '../raffle/baglan.php';
 
 $ayarsor=$db->prepare("Select * FROM ayar WHERE ayar_id=:id");
@@ -6,6 +8,12 @@ $ayarsor->execute(array(
 	'id' => 0
 ));
 $ayarcek=$ayarsor->fetch(PDO::FETCH_ASSOC);
+
+$kullanicisor=$db->prepare("Select * FROM kullanici WHERE kullanici_mail=:mail");
+$kullanicisor->execute(array(
+	'mail' => $_SESSION['kullanici_mail']
+));
+$kullanicicek=$kullanicisor->fetch(PDO::FETCH_ASSOC);
 
 ?>
 <!DOCTYPE html>
@@ -54,7 +62,7 @@ $ayarcek=$ayarsor->fetch(PDO::FETCH_ASSOC);
 						</div>
 						<div class="profile_info">
 							<span>Hoşgeldiniz,</span>
-							<h2>Enis</h2>
+							<h2><?php echo $kullanicicek['kullanici_adsoyad']; ?></h2>
 						</div>
 					</div>
 					<!-- /menu profile quick info -->
@@ -103,7 +111,7 @@ $ayarcek=$ayarsor->fetch(PDO::FETCH_ASSOC);
 						<ul class="nav navbar-nav navbar-right">
 							<li class="">
 								<a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-									<img src="images/img.jpg" alt="">Enis
+									<img src="images/img.jpg" alt=""><?php echo $kullanicicek['kullanici_adsoyad']; ?>
 									<span class=" fa fa-angle-down"></span>
 								</a>
 								<ul class="dropdown-menu dropdown-usermenu pull-right">
