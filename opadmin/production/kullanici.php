@@ -19,6 +19,11 @@ $kullanicisor->execute();
               <?php } elseif ($_GET['durum']=="no") {?>
                 <b style="color:red;">İşlem Başarısız...</b>
               <?php }
+              if ($_GET['sil']=="ok") {?>
+                <b style="color:green;">Silme Başarılı...</b>
+              <?php } elseif ($_GET['sil']=="no") {?>
+                <b style="color:red;">Silme Başarısız...</b>
+              <?php }
               ?>
             </small></h2>
             <ul class="nav navbar-right panel_toolbox">
@@ -51,7 +56,7 @@ $kullanicisor->execute();
                     <td><?php echo $kullanicicek['kullanici_mail']; ?></td>
                     <td><?php echo $kullanicicek['kullanici_tel']; ?></td>
                     <td><center><a href="kullanici-duzenle.php?kullanici_id=<?php echo $kullanicicek['kullanici_id']; ?>"><button class="btn btn-primary btn-xs">Düzenle</button></a></center></td>
-                    <td><center><button class="btn btn-danger btn-xs">Sil</button></center></td>
+                    <td><center><a href="../raffle/islem.php?kullanici_id=<?php echo $kullanicicek['kullanici_id']; ?>&kullanicisil=ok"><button class="btn btn-danger btn-xs">Sil</button></a></center></td>
                   </tr>
                 <?php  }
                 ?>
