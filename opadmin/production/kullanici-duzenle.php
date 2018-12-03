@@ -1,5 +1,10 @@
 <?php 
 include'header.php';
+$kullanicisor=$db->prepare("Select * FROM kullanici WHERE kullanici_id=:id");
+$kullanicisor->execute(array(
+  'id' => $_GET['kullanici_id'];
+));
+$kullanicicek=$kullanicisor->fetch(PDO::FETCH_ASSOC);
 ?>
 <!-- page content -->
 <div class="right_col" role="main">

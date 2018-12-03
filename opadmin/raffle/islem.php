@@ -229,4 +229,17 @@ if (isset($_POST['menuduzenle'])) {
 	}
 }
 
+if ($_GET['menusil']=="ok") {
+	$sil=$db->prepare("DELETE from menu WHERE menu_id=:id");
+	$kontrol=$sil->execute(array(
+		'id' => $_GET['menu_id']
+	));
+
+	if ($kontrol) {
+		header("Location:../production/menu.php?sil=ok");
+	} else {
+		header("Location:../production/menu.php?sil=no");
+	}
+}
+
 ?>
