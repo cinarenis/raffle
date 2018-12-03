@@ -12,7 +12,7 @@ $kullanicisor->execute();
       <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="x_panel">
           <div class="x_title">
-            <h2>Kullanıcı Listeleme <small>,
+            <h2>Kullanıcı Listeleme <small>
               <?php 
               if ($_GET['durum']=="ok") {?>
                 <b style="color:green;">İşlem Başarılı...</b>

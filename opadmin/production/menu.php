@@ -12,7 +12,7 @@ $menusor->execute();
       <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="x_panel">
           <div class="x_title">
-            <h2>Menü Listeleme <small>,
+            <h2>Menü Listeleme <small>
               <?php 
               if ($_GET['durum']=="ok") {?>
                 <b style="color:green;">İşlem Başarılı...</b>
@@ -23,11 +23,6 @@ $menusor->execute();
                 <b style="color:green;">Silme Başarılı...</b>
               <?php } elseif ($_GET['sil']=="no") {?>
                 <b style="color:red;">Silme Başarısız...</b>
-              <?php }
-              if ($_GET['ekle']=="ok") {?>
-                <b style="color:green;">Ekleme Başarılı...</b>
-              <?php } elseif ($_GET['ekle']=="no") {?>
-                <b style="color:red;">Ekleme Başarısız...</b>
               <?php }
               ?>
             </small></h2>
