@@ -2,7 +2,7 @@
 include'header.php';
 $kullanicisor=$db->prepare("Select * FROM kullanici WHERE kullanici_id=:id");
 $kullanicisor->execute(array(
-  'id' => $_GET['kullanici_id'];
+  'id' => $_GET['kullanici_id']
 ));
 $kullanicicek=$kullanicisor->fetch(PDO::FETCH_ASSOC);
 ?>
