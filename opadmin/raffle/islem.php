@@ -16,6 +16,8 @@ if (isset($_POST['logoduzenle'])) {
 		'logo' => $refimgyol
 	));
 	if ($update) {
+		$logosilunlink=$_POST['eski_yol'];
+		unlink("../../$logosilunlink");
 		Header("Location:../production/genel-ayar.php?durum=ok");
 	} else {
 		Header("Location:../production/genel-ayar.php?durum=no");
