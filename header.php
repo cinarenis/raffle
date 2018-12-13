@@ -97,8 +97,10 @@ $ayarcek=$ayarsor->fetch(PDO::FETCH_ASSOC);
 							<ul class="nav navbar-nav collapse navbar-collapse">
 								<li><a href="index.php" class="active">Anasayfa</a></li>
 								<?php 
-								$menusor=$db->prepare("SELECT * FROM menu order by menu_sira ASC");
-								$menusor->execute();
+								$menusor=$db->prepare("SELECT * FROM menu Where menu_durum=:durum order by menu_sira ASC");
+								$menusor->execute(array(
+									'durum' => 1
+								));
 								while($menucek=$menusor->fetch(PDO::FETCH_ASSOC)) {
 									?>
 									<li><a href="contact-us.html"><?php echo $menucek['menu_ad']; ?></a></li>
