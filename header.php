@@ -1,5 +1,6 @@
 <?php 
 include 'opadmin/raffle/baglan.php';
+include 'opadmin/production/fonksiyon.php';
 
 $ayarsor=$db->prepare("Select * FROM ayar WHERE ayar_id=:id");
 $ayarsor->execute(array(
@@ -103,7 +104,15 @@ $ayarcek=$ayarsor->fetch(PDO::FETCH_ASSOC);
 								));
 								while($menucek=$menusor->fetch(PDO::FETCH_ASSOC)) {
 									?>
-									<li><a href="contact-us.html"><?php echo $menucek['menu_ad']; ?></a></li>
+									<li><a href="
+										<?php 
+											if(!empty($menucek['menu_url'])){
+												echo $menucek['menu_url'];
+											}else{
+												echo "sayfa-".seo($menucek['menu_ad']);
+											}
+										?>"><?php echo $menucek['menu_ad']; ?></a>
+									</li>
 								<?php } ?>
 							</ul>
 						</div>
