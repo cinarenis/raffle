@@ -81,9 +81,6 @@ if ($say==0) {
 							<h3>Genel</h3>
 							<ul class="nav side-menu">
 								<li><a href="index.php"><i class="fa fa-home"></i> Anasayfa </a></li>
-								<li><a href="hakkimizda.php"><i class="fa fa-info"></i> Hakkımızda </a></li>
-								<li><a href="kullanici.php"><i class="fa fa-user"></i> Kullanıcılar </a></li>
-								<li><a href="menu.php"><i class="fa fa-list"></i> Menüler </a></li>
 								<li><a><i class="fa fa-cogs"></i> Site Ayarları <span class="fa fa-chevron-down"></span></a>
 									<ul class="nav child_menu">
 										<li><a href="genel-ayar.php"> Genel Ayarlar </a></li>
@@ -93,6 +90,9 @@ if ($say==0) {
 										<li><a href="mail-ayar.php"> Mail Ayarlar </a></li>
 									</ul>
 								</li>
+								<li><a href="menu.php"><i class="fa fa-list"></i> Menüler </a></li>
+								<li><a href="kullanici.php"><i class="fa fa-user"></i> Kullanıcılar </a></li>
+								<li><a href="hakkimizda.php"><i class="fa fa-info"></i> Hakkımızda </a></li>
 							</ul>
 						</div>
 					</div>

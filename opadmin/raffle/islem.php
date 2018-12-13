@@ -4,6 +4,24 @@ session_start();
 include 'baglan.php';
 include '../production/fonksiyon.php';
 
+if (isset($_POST['logoduzenle'])) {
+	$uploads_dir = '../../images';
+	@$tmp_name = $_FILES['ayar_logo']["tmp_name"];
+	@$name = $_FILES['ayar_logo']["name"];
+	$benzersizsayi4=rand(10000,59000);
+	$refimgyol=substr($uploads_dir, 6)."/".$benzersizsayi4.$name;
+	@move_uploaded_file($tmp_name, "$uploads_dir/$benzersizsayi4$name");	
+	$duzenle=$db->prepare("UPDATE ayar SET ayar_logo=:logo WHERE ayar_id=0");
+	$update=$duzenle->execute(array(
+		'logo' => $refimgyol
+	));
+	if ($update) {
+		Header("Location:../production/genel-ayar.php?durum=ok");
+	} else {
+		Header("Location:../production/genel-ayar.php?durum=no");
+	}
+}
+
 if (isset($_POST['admingiris'])) {
 	$kullanici_mail = $_POST['kullanici_mail'];
 	$kullanici_password = md5($_POST['kullanici_password']);
