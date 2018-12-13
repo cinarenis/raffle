@@ -2,6 +2,7 @@
 ob_start();
 session_start();
 include '../raffle/baglan.php';
+include 'fonksiyon.php';
 
 $ayarsor=$db->prepare("Select * FROM ayar WHERE ayar_id=:id");
 $ayarsor->execute(array(
