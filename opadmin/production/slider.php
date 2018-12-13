@@ -58,10 +58,10 @@ $slidersor->execute();
                 while($slidercek=$slidersor->fetch(PDO::FETCH_ASSOC)) { $say++ ?>
                   <tr>
                     <td width="15px"><center><?php echo $say; ?></center></td>
-                    <td><?php echo $slidercek['slider_resilyol']; ?></td>
-                    <td><?php echo $slidercek['slider_ad']; ?></td>
-                    <td><?php echo $slidercek['slider_url']; ?></td>
-                    <td><?php echo $slidercek['slider_sira']; ?></td>
+                    <td align="center"><img width="200" src="../../<?php echo $slidercek['slider_resimyol']; ?>"></td>
+                    <td align="center"><?php echo $slidercek['slider_ad']; ?></td>
+                    <td align="center"><?php echo $slidercek['slider_url']; ?></td>
+                    <td align="center"><?php echo $slidercek['slider_sira']; ?></td>
                     <td><?php 
                     if ($slidercek['slider_durum'] == 1) { ?>
                       <center><button class="btn btn-success btn-xs">Aktif</button></center>

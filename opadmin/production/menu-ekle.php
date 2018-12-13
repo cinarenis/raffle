@@ -31,7 +31,7 @@ include'header.php';
                 </div>
               </div>
               <div class="form-group">
-                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="menu_detay">Menü Detay <span class="required">*</span>
+                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="menu_detay">Menü Detay 
                 </label>
                 <div class="col-md-6 col-sm-6 col-xs-12">
                   <textarea class="ckeditor" id="editor1" name="menu_detay"></textarea>

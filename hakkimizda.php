@@ -17,7 +17,6 @@ $hakkimizdacek=$hakkimizdasor->fetch(PDO::FETCH_ASSOC);
 					<h2 class="title text-center">Tanıtım Videosu</h2>
 					<iframe width="560" height="315" src="https://www.youtube.com/embed/<?php echo $hakkimizdacek['hakkimizda_video'] ?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br><br>
 					<h2 class="title text-center">Hakkımızda</h2>
-					<p><strong><?php echo $hakkimizdacek['hakkimizda_baslik'] ?></strong></p>
 					<?php echo $hakkimizdacek['hakkimizda_icerik'] ?><br>
 					<h2 class="title text-center">Misyon</h2>
 					<?php echo $hakkimizdacek['hakkimizda_misyon'] ?><br><br><br>

@@ -4,17 +4,52 @@ session_start();
 include 'baglan.php';
 include '../production/fonksiyon.php';
 
+if (isset($_POST['sliderkaydet'])) {
+	$uploads_dir = '../../images/slider';
+	@$tmp_name = $_FILES['slider_resimyol']["tmp_name"];
+	@$name = $_FILES['slider_resimyol']["name"];
+	//resmin isminin benzersiz olması
+	$benzersizsayi1=rand(10000,59000);
+	$benzersizsayi2=rand(10000,59000);
+	$benzersizsayi3=rand(10000,59000);
+	$benzersizsayi4=rand(10000,59000);	
+	$benzersizad=$benzersizsayi1.$benzersizsayi2.$benzersizsayi3.$benzersizsayi4;
+	$refimgyol=substr($uploads_dir, 6)."/".$benzersizad.$name;
+	@move_uploaded_file($tmp_name, "$uploads_dir/$benzersizad$name");
+	$kaydet=$db->prepare("INSERT INTO slider SET
+		slider_ad=:slider_ad,
+		slider_sira=:slider_sira,
+		slider_link=:slider_link,
+		slider_resimyol=:slider_resimyol,
+		slider_durum=:slider_durum
+		");
+	$insert=$kaydet->execute(array(
+		'slider_ad' => $_POST['slider_ad'],
+		'slider_sira' => $_POST['slider_sira'],
+		'slider_link' => $_POST['slider_link'],
+		'slider_resimyol' => $refimgyol,
+		'slider_durum' => $_POST['slider_durum']
+		));
+
+	if ($insert) {
+		Header("Location:../production/slider.php?durum=ok");
+	} else {
+		Header("Location:../production/slider.php?durum=no");
+	}
+}
+
 if (isset($_POST['logoduzenle'])) {
 	$uploads_dir = '../../images';
 	@$tmp_name = $_FILES['ayar_logo']["tmp_name"];
 	@$name = $_FILES['ayar_logo']["name"];
-	$benzersizsayi4=rand(10000,59000);
-	$refimgyol=substr($uploads_dir, 6)."/".$benzersizsayi4.$name;
-	@move_uploaded_file($tmp_name, "$uploads_dir/$benzersizsayi4$name");	
+	$benzersizsayi1=rand(10000,59000);
+	$refimgyol=substr($uploads_dir, 6)."/".$benzersizsayi1.$name;
+	@move_uploaded_file($tmp_name, "$uploads_dir/$benzersizsayi1$name");	
 	$duzenle=$db->prepare("UPDATE ayar SET ayar_logo=:logo WHERE ayar_id=0");
 	$update=$duzenle->execute(array(
 		'logo' => $refimgyol
 	));
+
 	if ($update) {
 		$logosilunlink=$_POST['eski_yol'];
 		unlink("../../$logosilunlink");

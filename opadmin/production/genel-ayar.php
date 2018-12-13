@@ -42,7 +42,7 @@ include'header.php';
                 </div>
               </div>
               <div class="form-group">
-                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Resim Seç<span class="required">*</span>
+                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="ayar_logo">Resim Seç<span class="required">*</span>
                 </label>
                 <div class="col-md-6 col-sm-6 col-xs-12">
                   <input type="file" id="ayar_logo"  name="ayar_logo"  class="form-control col-md-7 col-xs-12">
