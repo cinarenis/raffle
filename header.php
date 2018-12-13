@@ -64,7 +64,7 @@ $ayarcek=$ayarsor->fetch(PDO::FETCH_ASSOC);
 				<div class="row">
 					<div class="col-sm-4">
 						<div class="logo pull-left">
-							<a href="index.php"><img src="images/home/logo.png" alt="<?php echo $ayarcek['ayar_title']; ?>" /></a>
+							<a href="index.php"><img src="<?php echo $ayarcek['ayar_logo']; ?>" alt="<?php echo $ayarcek['ayar_title']; ?>" /></a>
 						</div>
 					</div>
 					<div class="col-sm-8">
