@@ -11,24 +11,24 @@ $ayarcek=$ayarsor->fetch(PDO::FETCH_ASSOC);
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="<?php echo $ayarcek['ayar_description']; ?>">
-    <meta name="keywords" content="<?php echo $ayarcek['ayar_keywords']; ?>">
-    <meta name="author" content="<?php echo $ayarcek['ayar_author']; ?>">
-    <title><?php echo $ayarcek['ayar_title']; ?></title>
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/font-awesome.min.css" rel="stylesheet">
-    <link href="css/prettyPhoto.css" rel="stylesheet">
-    <link href="css/price-range.css" rel="stylesheet">
-    <link href="css/animate.css" rel="stylesheet">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="<?php echo $ayarcek['ayar_description']; ?>">
+	<meta name="keywords" content="<?php echo $ayarcek['ayar_keywords']; ?>">
+	<meta name="author" content="<?php echo $ayarcek['ayar_author']; ?>">
+	<title><?php echo $ayarcek['ayar_title']; ?></title>
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/font-awesome.min.css" rel="stylesheet">
+	<link href="css/prettyPhoto.css" rel="stylesheet">
+	<link href="css/price-range.css" rel="stylesheet">
+	<link href="css/animate.css" rel="stylesheet">
 	<link href="css/main.css" rel="stylesheet">
 	<link href="css/responsive.css" rel="stylesheet">
     <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
-    <![endif]-->       
-    <link rel="shortcut icon" href="images/ico/favicon.png">
+<![endif]-->       
+<link rel="shortcut icon" href="images/ico/favicon.png">
 </head><!--/head-->
 
 <body>
@@ -80,7 +80,7 @@ $ayarcek=$ayarsor->fetch(PDO::FETCH_ASSOC);
 				</div>
 			</div>
 		</div><!--/header-middle-->
-	
+
 		<div class="header-bottom"><!--header-bottom-->
 			<div class="container">
 				<div class="row">
@@ -95,18 +95,14 @@ $ayarcek=$ayarsor->fetch(PDO::FETCH_ASSOC);
 						</div>
 						<div class="mainmenu pull-left">
 							<ul class="nav navbar-nav collapse navbar-collapse">
-								<li><a href="index.html" class="active">Home</a></li>
-								<li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
-                                    <ul role="menu" class="sub-menu">
-                                        <li><a href="shop.html">Products</a></li>
-										<li><a href="product-details.html">Product Details</a></li> 
-										<li><a href="checkout.html">Checkout</a></li> 
-										<li><a href="cart.html">Cart</a></li> 
-										<li><a href="login.html">Login</a></li> 
-                                    </ul>
-                                </li> 
-								<li><a href="404.html">404</a></li>
-								<li><a href="contact-us.html">Contact</a></li>
+								<li><a href="index.php" class="active">Anasayfa</a></li>
+								<?php 
+								$menusor=$db->prepare("SELECT * FROM menu order by menu_sira ASC");
+								$menusor->execute();
+								while($menucek=$menusor->fetch(PDO::FETCH_ASSOC)) {
+									?>
+									<li><a href="contact-us.html"><?php echo $menucek['menu_ad']; ?></a></li>
+								<?php } ?>
 							</ul>
 						</div>
 					</div>
