@@ -4,6 +4,19 @@ session_start();
 include 'baglan.php';
 include '../production/fonksiyon.php';
 
+if ($_GET['slidersil']=="ok") {
+	$sil=$db->prepare("DELETE from slider WHERE slider_id=:id");
+	$kontrol=$sil->execute(array(
+		'id' => $_GET['slider_id']
+	));
+
+	if ($kontrol) {
+		header("Location:../production/slider.php?sil=ok");
+	} else {
+		header("Location:../production/slider.php?sil=no");
+	}
+}
+
 if (isset($_POST['sliderkaydet'])) {
 	$uploads_dir = '../../images/slider';
 	@$tmp_name = $_FILES['slider_resimyol']["tmp_name"];
