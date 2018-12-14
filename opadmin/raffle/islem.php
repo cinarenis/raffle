@@ -4,13 +4,70 @@ session_start();
 include 'baglan.php';
 include '../production/fonksiyon.php';
 
+if (isset($_POST['sliderresimduzenle'])) {
+	$slider_id = $_POST['slider_id'];
+	$uploads_dir = '../../images/slider';
+	@$tmp_name = $_FILES['slider_resimyol']["tmp_name"];
+	@$name = $_FILES['slider_resimyol']["name"];
+	$benzersizsayi1=rand(10000,59000);
+	$benzersizsayi2=rand(10000,59000);
+	$benzersizsayi3=rand(10000,59000);
+	$benzersizsayi4=rand(10000,59000);	
+	$benzersizad=$benzersizsayi1.$benzersizsayi2.$benzersizsayi3.$benzersizsayi4;
+	$refimgyol=substr($uploads_dir, 6)."/".$benzersizad.$name;
+	@move_uploaded_file($tmp_name, "$uploads_dir/$benzersizad$name");
+	$duzenle=$db->prepare("UPDATE slider SET slider_resimyol=:resimyol WHERE slider_resimyol=:yeniyol");
+	$update=$duzenle->execute(array(
+		'resimyol' => $refimgyol,
+		'yeniyol' => $_POST['eski_yol']
+	));
+
+	if ($update) {
+		$logosilunlink=$_POST['eski_yol'];
+		unlink("../../$logosilunlink");
+		header("Location:../production/slider-duzenle.php?slider_id=$slider_id&durum=ok");
+	} else {
+		header("Location:../production/slider-duzenle.php?slider_id=$slider_id&durum=no");
+	}
+}
+
+if (isset($_POST['sliderduzenle'])) {
+	$slider_id = $_POST['slider_id'];
+	$slider_seourl=seo($_POST['slider_ad']);
+	$ayarkaydet=$db->prepare("UPDATE slider SET
+		slider_ad=:slider_ad,
+		slider_link=:slider_link,
+		slider_sira=:slider_sira,
+		slider_durum=:slider_durum
+		WHERE slider_id={$_POST['slider_id']}");
+	$update=$ayarkaydet->execute(array(
+		'slider_ad' => $_POST['slider_ad'],
+		'slider_link' => $slider_seourl,
+		'slider_sira' => $_POST['slider_sira'],
+		'slider_durum' => $_POST['slider_durum']
+	));
+
+	if($update) {
+		header("Location:../production/slider-duzenle.php?slider_id=$slider_id&durum=ok");
+	} else {
+		header("Location:../production/slider-duzenle.php?slider_id=$slider_id&durum=no");
+	}
+}
+
 if ($_GET['slidersil']=="ok") {
 	$sil=$db->prepare("DELETE from slider WHERE slider_id=:id");
+	$slidersor=$db->prepare("SELECT * FROM slider WHERE slider_id=:id");
+	$slidersor->execute(array(
+		'id' => $_GET['slider_id']
+	));
+	$slidercek=$slidersor->fetch(PDO::FETCH_ASSOC);
+	$slidersilunlink=$slidercek['slider_resimyol'];
 	$kontrol=$sil->execute(array(
 		'id' => $_GET['slider_id']
 	));
 
 	if ($kontrol) {
+		unlink("../../$slidersilunlink");
 		header("Location:../production/slider.php?sil=ok");
 	} else {
 		header("Location:../production/slider.php?sil=no");
@@ -39,15 +96,15 @@ if (isset($_POST['sliderkaydet'])) {
 	$insert=$kaydet->execute(array(
 		'slider_ad' => $_POST['slider_ad'],
 		'slider_sira' => $_POST['slider_sira'],
-		'slider_link' => $_POST['slider_link'],
+		'slider_link' => seo($_POST['slider_ad']),
 		'slider_resimyol' => $refimgyol,
 		'slider_durum' => $_POST['slider_durum']
-		));
+	));
 
 	if ($insert) {
-		Header("Location:../production/slider.php?durum=ok");
+		header("Location:../production/slider.php?durum=ok");
 	} else {
-		Header("Location:../production/slider.php?durum=no");
+		header("Location:../production/slider.php?durum=no");
 	}
 }
 
@@ -66,9 +123,9 @@ if (isset($_POST['logoduzenle'])) {
 	if ($update) {
 		$logosilunlink=$_POST['eski_yol'];
 		unlink("../../$logosilunlink");
-		Header("Location:../production/genel-ayar.php?durum=ok");
+		header("Location:../production/genel-ayar.php?durum=ok");
 	} else {
-		Header("Location:../production/genel-ayar.php?durum=no");
+		header("Location:../production/genel-ayar.php?durum=no");
 	}
 }
 

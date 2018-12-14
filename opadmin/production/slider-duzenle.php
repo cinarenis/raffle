@@ -1,5 +1,11 @@
 <?php 
 include'header.php';
+$slidersor=$db->prepare("SELECT * FROM slider WHERE slider_id=:id");
+$slidersor->execute(array(
+  'id' => $_GET['slider_id']
+));
+$slidercek=$slidersor->fetch(PDO::FETCH_ASSOC);
+
 ?>
 <!-- page content -->
 <div class="right_col" role="main">
@@ -9,7 +15,7 @@ include'header.php';
       <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="x_panel">
           <div class="x_title">
-            <h2>Genel Ayarlar <small>
+            <h2>Slider Düzenleme <small>
               <?php 
               if ($_GET['durum']=="ok") { ?>
                 <b style="color:green;">İşlem Başarılı...</b>
@@ -30,70 +36,67 @@ include'header.php';
             <br />
             <form action="../raffle/islem.php" method="POST" enctype="multipart/form-data"  data-parsley-validate class="form-horizontal form-label-left">
               <div class="form-group">
-                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="ayar_logo">Yüklü Logo
+                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="slider_resimyol">Slider Resim
                 </label>
                 <div class="col-md-6 col-sm-6 col-xs-12">
                   <?php 
-                  if (strlen($ayarcek['ayar_logo'])>0) {?>
-                    <img width="200"  src="../../<?php echo $ayarcek['ayar_logo']; ?>">
+                  if (strlen($slidercek['slider_resimyol'])>0) {?>
+                    <img width="200"  src="../../<?php echo $slidercek['slider_resimyol']; ?>">
                   <?php } else {?>
                     <img width="200"  src="../../images/logo-yok.png">
                   <?php } ?>
                 </div>
               </div>
               <div class="form-group">
-                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="ayar_logo">Resim Seç<span class="required">*</span>
+                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="slider_resimyol">Resim Seç<span class="required">*</span>
                 </label>
                 <div class="col-md-6 col-sm-6 col-xs-12">
-                  <input type="file" id="ayar_logo"  name="ayar_logo"  class="form-control col-md-7 col-xs-12">
+                  <input type="file" id="slider_resimyol"  name="slider_resimyol"  class="form-control col-md-7 col-xs-12">
                 </div>
               </div>
-              <input type="hidden" name="eski_yol" value="<?php echo $ayarcek['ayar_logo']; ?>">
+              <input type="hidden" name="eski_yol" value="<?php echo $slidercek['slider_resimyol']; ?>">
+              <input type="hidden" name="slider_id" value="<?php echo $slidercek['slider_id']; ?>">
               <div align="right" class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                <button type="submit" name="logoduzenle" class="btn btn-success">Güncelle</button>
+                <button type="submit" name="sliderresimduzenle" class="btn btn-success">Güncelle</button>
               </div>
             </form>
-
             <form action="../raffle/islem.php" method="POST" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
               <div class="form-group">
-                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="ayar_url">Site URL <span class="required">*</span>
+                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="slider_adi">Slider Ad <span class="required">*</span>
                 </label>
                 <div class="col-md-6 col-sm-6 col-xs-12">
-                  <input type="text" id="ayar_url" name="ayar_url" value="<?php echo $ayarcek['ayar_url'] ?>" required="required" class="form-control col-md-7 col-xs-12">
+                  <input type="text" id="slider_adi" name="slider_ad" value="<?php echo $slidercek['slider_ad']; ?>" required="required" class="form-control col-md-7 col-xs-12">
                 </div>
               </div>
               <div class="form-group">
-                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="ayar_title">Site Başlık <span class="required">*</span>
+                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="slider_link">Slider URL
                 </label>
                 <div class="col-md-6 col-sm-6 col-xs-12">
-                  <input type="text" id="ayar_title" name="ayar_title" value="<?php echo $ayarcek['ayar_title'] ?>" required="required" class="form-control col-md-7 col-xs-12">
+                  <input type="text" id="slider_link" name="slider_link" disabled value="<?php echo $slidercek['slider_link']; ?>" class="form-control col-md-7 col-xs-12">
                 </div>
               </div>
               <div class="form-group">
-                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="ayar_description">Site Açıklama <span class="required">*</span>
+                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="slider_sira">Slider Sıra <span class="required">*</span>
                 </label>
                 <div class="col-md-6 col-sm-6 col-xs-12">
-                  <input type="text" id="ayar_description" name="ayar_description" value="<?php echo $ayarcek['ayar_description'] ?>" required="required" class="form-control col-md-7 col-xs-12">
+                  <input type="text" id="slider_sira" name="slider_sira" value="<?php echo $slidercek['slider_sira']; ?>" required="required" class="form-control col-md-7 col-xs-12">
                 </div>
               </div>
               <div class="form-group">
-                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="ayar_keywords">Site Anahtar Kelime <span class="required">*</span>
+                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="slider_durum">Slider Durum <span class="required">*</span>
                 </label>
                 <div class="col-md-6 col-sm-6 col-xs-12">
-                  <input type="text" id="ayar_keywords" name="ayar_keywords" value="<?php echo $ayarcek['ayar_keywords'] ?>" required="required" class="form-control col-md-7 col-xs-12">
+                  <select id="heard" class="form-control" name="slider_durum" required="required">
+                    <option value="1" <?php echo $slidercek['slider_durum'] == '1' ? 'selected=""' : ''; ?>>Aktif</option>
+                    <option value="0" <?php if ($slidercek['slider_durum'] == 0) { echo 'selected=""'; } ?>>Pasif</option>
+                  </select>
                 </div>
               </div>
-              <div class="form-group">
-                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="ayar_author">Site Yazar <span class="required">*</span>
-                </label>
-                <div class="col-md-6 col-sm-6 col-xs-12">
-                  <input type="text" id="ayar_author" name="ayar_author" value="<?php echo $ayarcek['ayar_author'] ?>" required="required" class="form-control col-md-7 col-xs-12">
-                </div>
-              </div>
+              <input type="hidden" name="slider_id" value="<?php echo $slidercek['slider_id']; ?>">
               <div class="ln_solid"></div>
               <div class="form-group">
                 <div align="right" class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                  <button type="submit" name="genelayarkaydet" class="btn btn-success">Güncelle</button>
+                  <button type="submit" name="sliderduzenle" class="btn btn-success">Güncelle</button>
                 </div>
               </div>
             </form>
