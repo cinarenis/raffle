@@ -16,10 +16,10 @@ if (isset($_POST['sliderresimduzenle'])) {
 	$benzersizad=$benzersizsayi1.$benzersizsayi2.$benzersizsayi3.$benzersizsayi4;
 	$refimgyol=substr($uploads_dir, 6)."/".$benzersizad.$name;
 	@move_uploaded_file($tmp_name, "$uploads_dir/$benzersizad$name");
-	$duzenle=$db->prepare("UPDATE slider SET slider_resimyol=:resimyol WHERE slider_resimyol=:yeniyol");
+	$duzenle=$db->prepare("UPDATE slider SET slider_resimyol=:resimyol WHERE slider_id=:slider_id");
 	$update=$duzenle->execute(array(
 		'resimyol' => $refimgyol,
-		'yeniyol' => $_POST['eski_yol']
+		'slider_id' => $slider_id
 	));
 
 	if ($update) {
@@ -56,17 +56,12 @@ if (isset($_POST['sliderduzenle'])) {
 
 if ($_GET['slidersil']=="ok") {
 	$sil=$db->prepare("DELETE from slider WHERE slider_id=:id");
-	$slidersor=$db->prepare("SELECT * FROM slider WHERE slider_id=:id");
-	$slidersor->execute(array(
-		'id' => $_GET['slider_id']
-	));
-	$slidercek=$slidersor->fetch(PDO::FETCH_ASSOC);
-	$slidersilunlink=$slidercek['slider_resimyol'];
 	$kontrol=$sil->execute(array(
 		'id' => $_GET['slider_id']
 	));
 
 	if ($kontrol) {
+		$slidersilunlink=$_GET['slider_resimyol'];
 		unlink("../../$slidersilunlink");
 		header("Location:../production/slider.php?sil=ok");
 	} else {
