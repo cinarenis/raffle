@@ -175,14 +175,14 @@ if (isset($_POST['logoduzenle'])) {
 }
 
 if (isset($_POST['admingiris'])) {
-	$kullanici_mail = $_POST['kullanici_mail'];
+	$kullanici_mail = htmlspecialchars($_POST['kullanici_mail']);
 	$kullanici_password = md5($_POST['kullanici_password']);
-
-	$kullanicisor=$db->prepare("Select * FROM kullanici WHERE kullanici_mail=:mail and kullanici_password=:password and kullanici_yetki=:yetki");
+	$kullanicisor=$db->prepare("SELECT * FROM kullanici WHERE kullanici_mail=:mail and kullanici_password=:password and kullanici_yetki=:yetki and kullanici_durum=:durum");
 	$kullanicisor->execute(array(
 		'mail' => $kullanici_mail,
 		'password' => $kullanici_password,
-		'yetki' => 5
+		'yetki' => 5,
+		'durum' => 1
 	));
 
 	$say=$kullanicisor->rowCount();
@@ -192,6 +192,27 @@ if (isset($_POST['admingiris'])) {
 		header("Location:../production/index.php");
 	} else {
 		header("Location:../production/login.php?durum=no");
+	}
+}
+
+if (isset($_POST['kullanicigiris'])) {
+	$kullanici_mail = htmlspecialchars($_POST['kullanici_mail']);
+	$kullanici_password = md5($_POST['kullanici_password']);
+	$kullanicisor=$db->prepare("SELECT * FROM kullanici WHERE kullanici_mail=:mail and kullanici_password=:password and kullanici_yetki=:yetki and kullanici_durum=:durum");
+	$kullanicisor->execute(array(
+		'mail' => $kullanici_mail,
+		'password' => $kullanici_password,
+		'yetki' => 1,
+		'durum' => 1
+	));
+
+	$say=$kullanicisor->rowCount();
+
+	if ($say==1) {
+		$_SESSION['userkullanici_mail'] = $kullanici_mail;
+		header("Location:../../index.php");
+	} else {
+		header("Location:../../oturum.php?durum=basarisizgiris");
 	}
 }
 

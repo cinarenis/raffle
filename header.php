@@ -1,4 +1,6 @@
 <?php 
+ob_start();
+session_start();
 include 'opadmin/raffle/baglan.php';
 include 'opadmin/production/fonksiyon.php';
 
@@ -7,6 +9,13 @@ $ayarsor->execute(array(
 	'id' => 0
 ));
 $ayarcek=$ayarsor->fetch(PDO::FETCH_ASSOC);
+
+$kullanicisor=$db->prepare("Select * FROM kullanici WHERE kullanici_mail=:mail");
+$kullanicisor->execute(array(
+	'mail' => $_SESSION['userkullanici_mail']
+));
+$say=$kullanicisor->rowCount();
+$kullanicicek=$kullanicisor->fetch(PDO::FETCH_ASSOC);
 
 ?>
 <!DOCTYPE html>
@@ -54,6 +63,15 @@ $ayarcek=$ayarsor->fetch(PDO::FETCH_ASSOC);
 								<li><a href="http://<?php echo $ayarcek['ayar_youtube']; ?>"><i class="fa fa-youtube"></i></a></li>
 							</ul>
 						</div>
+						<?php 
+						if (isset($_SESSION['userkullanici_mail'])) { 
+							?>
+							<div class="contactinfo">
+								<ul class="nav nav-pills pull-right">
+									<li><a><i class="fa fa-user"></i> Hoşgeldin, <b><?php echo $kullanicicek['kullanici_adsoyad']; ?></b></a></li>
+								</ul>
+							</div>
+						<?php } ?>
 					</div>
 				</div>
 			</div>
@@ -70,11 +88,18 @@ $ayarcek=$ayarsor->fetch(PDO::FETCH_ASSOC);
 					<div class="col-sm-8">
 						<div class="shop-menu pull-right">
 							<ul class="nav navbar-nav">
-								<li><a href="#"><i class="fa fa-user"></i> Account</a></li>
-								<li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
-								<li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
-								<li><a href="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a></li>
-								<li><a href="oturum.php"><i class="fa fa-lock"></i> Giriş Yap & Kaydol</a></li>
+								<?php 
+								if (isset($_SESSION['userkullanici_mail'])) { 
+									?>
+									<li><a href="siparis.php"><i class="fa fa-star"></i> Siparişlerim</a></li>
+									<li><a href="odeme.php"><i class="fa fa-crosshairs"></i> Ödeme</a></li>
+									<li><a href="sepet.php"><i class="fa fa-shopping-cart"></i> Sepet</a></li>
+									<li><a href="hesabim.php"><i class="fa fa-user"></i> Hesabım</a></li>
+									<li><a href="logout.php"><i class="glyphicon glyphicon-off"></i> Çıkış Yap</a></li>
+								<?php }else { ?>
+									<li><a href="oturum.php"><i class="fa fa-lock"></i> Giriş Yap & Kaydol</a></li>
+								<?php }
+								?>
 							</ul>
 						</div>
 					</div>
@@ -106,23 +131,23 @@ $ayarcek=$ayarsor->fetch(PDO::FETCH_ASSOC);
 									?>
 									<li><a href="
 										<?php 
-											if(!empty($menucek['menu_url'])){
-												echo $menucek['menu_url'];
+										if(!empty($menucek['menu_url'])){
+											echo $menucek['menu_url'];
 											}else{
 												echo "sayfa-".seo($menucek['menu_ad']);
 											}
-										?>"><?php echo $menucek['menu_ad']; ?></a>
-									</li>
-								<?php } ?>
-							</ul>
+											?>"><?php echo $menucek['menu_ad']; ?></a>
+										</li>
+									<?php } ?>
+								</ul>
+							</div>
 						</div>
-					</div>
-					<div class="col-sm-3">
-						<div class="search_box pull-right">
-							<input type="text" placeholder="Çekiliş Ara"/>
+						<div class="col-sm-3">
+							<div class="search_box pull-right">
+								<input type="text" placeholder="Çekiliş Ara"/>
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-		</div><!--/header-bottom-->
+			</div><!--/header-bottom-->
 	</header><!--/header-->
