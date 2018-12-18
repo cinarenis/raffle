@@ -36,12 +36,14 @@ if (isset($_POST['sliderduzenle'])) {
 	$slider_seourl=seo($_POST['slider_ad']);
 	$ayarkaydet=$db->prepare("UPDATE slider SET
 		slider_ad=:slider_ad,
+		slider_aciklama=:slider_aciklama,
 		slider_link=:slider_link,
 		slider_sira=:slider_sira,
 		slider_durum=:slider_durum
 		WHERE slider_id={$_POST['slider_id']}");
 	$update=$ayarkaydet->execute(array(
 		'slider_ad' => $_POST['slider_ad'],
+		'slider_aciklama' => $_POST['slider_aciklama'],
 		'slider_link' => $slider_seourl,
 		'slider_sira' => $_POST['slider_sira'],
 		'slider_durum' => $_POST['slider_durum']
@@ -83,6 +85,7 @@ if (isset($_POST['sliderkaydet'])) {
 	@move_uploaded_file($tmp_name, "$uploads_dir/$benzersizad$name");
 	$kaydet=$db->prepare("INSERT INTO slider SET
 		slider_ad=:slider_ad,
+		slider_aciklama=:slider_aciklama,
 		slider_sira=:slider_sira,
 		slider_link=:slider_link,
 		slider_resimyol=:slider_resimyol,
@@ -90,6 +93,7 @@ if (isset($_POST['sliderkaydet'])) {
 		");
 	$insert=$kaydet->execute(array(
 		'slider_ad' => $_POST['slider_ad'],
+		'slider_aciklama' => $_POST['slider_aciklama'],
 		'slider_sira' => $_POST['slider_sira'],
 		'slider_link' => seo($_POST['slider_ad']),
 		'slider_resimyol' => $refimgyol,

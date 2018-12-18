@@ -37,6 +37,27 @@ include'header.php';
                   <input type="text" id="slider_adi" name="slider_ad" required="required" placeholder="Slider Adını Giriniz" class="form-control col-md-7 col-xs-12">
                 </div>
               </div>
+              <!-- Ck Editör Başlangıç --> 
+              <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="slider_aciklama">Slider Açıklama <span class="required">*</span>
+                </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                  <textarea class="ckeditor" id="editor1" name="slider_aciklama"><?php echo $slidercek['slider_aciklama'] ?></textarea>
+                </div>
+              </div>
+              <script type="text/javascript">
+                CKEDITOR.replace('editor1',
+                {
+                  filebrowserBrowseUrl : 'ckfinder/ckfinder.html',
+                  filebrowserImageBrowseUrl : 'ckfinder/ckfinder.html?type=Images',
+                  filebrowserFlashBrowseUrl : 'ckfinder/ckfinder.html?type=Flash',
+                  filebrowserUploadUrl : 'ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
+                  filebrowserImageUploadUrl : 'ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
+                  filebrowserFlashUploadUrl : 'ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash',
+                  forcePasteAsPlainText : true
+                });
+              </script>
+              <!-- CK Editör Bitiş -->
               <div class="form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="slider_link">Slider URL 
                 </label>

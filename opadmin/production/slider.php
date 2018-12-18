@@ -45,7 +45,7 @@ $slidersor->execute();
                   <th>S.No</th>
                   <th>Resim</th>
                   <th>Slider Adı</th>
-                  <th>Slider URL</th>
+                  <th>Slider Açıklama</th>
                   <th>Slider Sıra</th>
                   <th>Slider Durum</th>
                   <th>Düzenle</th>
@@ -60,8 +60,8 @@ $slidersor->execute();
                     <td width="15px"><center><?php echo $say; ?></center></td>
                     <td align="center"><img width="200" src="../../<?php echo $slidercek['slider_resimyol']; ?>"></td>
                     <td align="center"><?php echo $slidercek['slider_ad']; ?></td>
-                    <td align="center"><?php echo $slidercek['slider_url']; ?></td>
-                    <td align="center"><?php echo $slidercek['slider_sira']; ?></td>
+                    <td align="center"><?php echo $slidercek['slider_aciklama']; ?></td>
+                    <td width="15px" align="center"><?php echo $slidercek['slider_sira']; ?></td>
                     <td><?php 
                     if ($slidercek['slider_durum'] == 1) { ?>
                       <center><button class="btn btn-success btn-xs">Aktif</button></center>
