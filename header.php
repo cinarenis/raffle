@@ -91,9 +91,9 @@ $kullanicicek=$kullanicisor->fetch(PDO::FETCH_ASSOC);
 								<?php 
 								if (isset($_SESSION['userkullanici_mail'])) { 
 									?>
-									<li><a href="siparis.php"><i class="fa fa-star"></i> Siparişlerim</a></li>
-									<li><a href="odeme.php"><i class="fa fa-crosshairs"></i> Ödeme</a></li>
 									<li><a href="sepet.php"><i class="fa fa-shopping-cart"></i> Sepet</a></li>
+									<li><a href="odeme.php"><i class="fa fa-crosshairs"></i> Ödeme</a></li>
+									<li><a href="siparis.php"><i class="fa fa-star"></i> Siparişlerim</a></li>
 									<li><a href="hesabim.php"><i class="fa fa-user"></i> Hesabım</a></li>
 									<li><a href="logout.php"><i class="glyphicon glyphicon-off"></i> Çıkış Yap</a></li>
 								<?php }else { ?>
