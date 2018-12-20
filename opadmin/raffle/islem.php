@@ -4,6 +4,27 @@ session_start();
 include 'baglan.php';
 include '../production/fonksiyon.php';
 
+if (isset($_POST['kategoriekle'])) {
+	$kategori_seourl=seo($_POST['kategori_ad']);
+	$kaydet=$db->prepare("INSERT INTO kategori SET
+		kategori_ad=:kategori_ad,
+		kategori_durum=:kategori_durum,	
+		kategori_seourl=:kategori_seourl,
+		kategori_sira=:kategori_sira
+		");
+	$insert=$kaydet->execute(array(
+		'kategori_ad' => $_POST['kategori_ad'],
+		'kategori_durum' => $_POST['kategori_durum'],
+		'kategori_seourl' => $kategori_seourl,
+		'kategori_sira' => $_POST['kategori_sira']		
+		));
+	if ($insert) {
+		header("Location:../production/kategori.php?durum=ok");
+	} else {
+		header("Location:../production/kategori.php?durum=no");
+	}
+}
+
 if ($_GET['kategorisil']=="ok") {
 	$sil=$db->prepare("DELETE FROM kategori WHERE kategori_id=:kategori_id");
 	$kontrol=$sil->execute(array(
@@ -23,14 +44,12 @@ if (isset($_POST['kategoriduzenle'])) {
 		kategori_ad=:kategori_ad,
 		kategori_durum=:kategori_durum,	
 		kategori_seourl=:kategori_seourl,
-		kategori_ust=:kategori_ust,
 		kategori_sira=:kategori_sira
 		WHERE kategori_id={$_POST['kategori_id']}");
 	$update=$kaydet->execute(array(
 		'kategori_ad' => $_POST['kategori_ad'],
 		'kategori_durum' => $_POST['kategori_durum'],
 		'kategori_seourl' => $kategori_seourl,
-		'kategori_ust' => $_POST['kategori_ust'],
 		'kategori_sira' => $_POST['kategori_sira']		
 		));
 	if ($update) {
