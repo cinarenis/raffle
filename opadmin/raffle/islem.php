@@ -4,6 +4,18 @@ session_start();
 include 'baglan.php';
 include '../production/fonksiyon.php';
 
+if ($_GET['kategorisil']=="ok") {
+	$sil=$db->prepare("DELETE FROM kategori WHERE kategori_id=:kategori_id");
+	$kontrol=$sil->execute(array(
+		'kategori_id' => $_GET['kategori_id']
+		));
+	if ($kontrol) {
+		header("Location:../production/kategori.php?sil=ok");
+	} else {
+		header("Location:../production/kategori.php?sil=no");
+	}
+}
+
 if (isset($_POST['kategoriduzenle'])) {
 	$kategori_id=$_POST['kategori_id'];
 	$kategori_seourl=seo($_POST['kategori_ad']);
