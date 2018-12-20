@@ -4,6 +4,42 @@ session_start();
 include 'baglan.php';
 include '../production/fonksiyon.php';
 
+if (isset($_POST['sifredegistir'])) {
+	$kullanici_id = $_POST['kullanici_id'];
+	if ($_POST['kullanici_yenisifre']==$_POST['kullanici_yenisifretekrar']) {
+		if (strlen($_POST['kullanici_yenisifre'])>=6) {
+			$kullanicisor=$db->prepare("SELECT * FROM kullanici WHERE kullanici_id=:id");
+			$kullanicisor->execute(array(
+				'id' => $kullanici_id
+			));
+			$say=$kullanicisor->rowCount();
+			$kullanicicek=$kullanicisor->fetch(PDO::FETCH_ASSOC);
+			if ($say!=0) {
+				if (md5($_POST['kullanici_password']) == $kullanicicek['kullanici_password']) {
+					//md5 fonksiyonu şifreyi md5 şifreli hale getirir.
+					$password=md5($_POST['kullanici_yenisifre']);
+					//Kullanıcı kayıt işlemi yapılıyor...
+					$kullanicikaydet=$db->prepare("UPDATE kullanici SET
+						kullanici_password=:kullanici_password
+						WHERE kullanici_id={$_POST['kullanici_id']}");
+					$update=$kullanicikaydet->execute(array(
+						'kullanici_password' => $password
+					));
+				}
+				if ($update) {
+					header("Location:../../sifredegistir.php?kullanici_id=$kullanici_id&durum=ok");
+				} else {
+					header("Location:../../sifredegistir.php?kullanici_id=$kullanici_id&durum=no");
+				}
+			}
+		} else {
+			header("Location:../../sifredegistir.php?durum=eksiksifre");
+		}
+	} else {
+		header("Location:../../sifredegistir.php?durum=farklisifre");
+	}
+}
+
 if (isset($_POST['iletisimbilgilerimkaydet'])) {
 	$kullanici_id = $_POST['kullanici_id'];
 	$ayarkaydet=$db->prepare("UPDATE kullanici SET
