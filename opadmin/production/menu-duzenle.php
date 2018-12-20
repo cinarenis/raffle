@@ -41,7 +41,7 @@ $menucek=$menusor->fetch(PDO::FETCH_ASSOC);
                 <div class="col-md-6 col-sm-6 col-xs-12">
                   <input type="text" id="menu_ad" name="menu_ad" value="<?php 
                   if($menucek['menu_url'] != ""){
-                    echo $ayarcek['ayar_url'].'/'.$menucek['menu_url'];
+                    echo $ayarcek['ayar_url'].$menucek['menu_url'];
                     }else{
                   echo $ayarcek['ayar_url']; ?>/sayfa-<?php echo seo($menucek['menu_ad']);
                   } ?>" disabled class="form-control col-md-7 col-xs-12">

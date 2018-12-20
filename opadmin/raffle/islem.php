@@ -4,6 +4,30 @@ session_start();
 include 'baglan.php';
 include '../production/fonksiyon.php';
 
+if (isset($_POST['kategoriduzenle'])) {
+	$kategori_id=$_POST['kategori_id'];
+	$kategori_seourl=seo($_POST['kategori_ad']);
+	$kaydet=$db->prepare("UPDATE kategori SET
+		kategori_ad=:kategori_ad,
+		kategori_durum=:kategori_durum,	
+		kategori_seourl=:kategori_seourl,
+		kategori_ust=:kategori_ust,
+		kategori_sira=:kategori_sira
+		WHERE kategori_id={$_POST['kategori_id']}");
+	$update=$kaydet->execute(array(
+		'kategori_ad' => $_POST['kategori_ad'],
+		'kategori_durum' => $_POST['kategori_durum'],
+		'kategori_seourl' => $kategori_seourl,
+		'kategori_ust' => $_POST['kategori_ust'],
+		'kategori_sira' => $_POST['kategori_sira']		
+		));
+	if ($update) {
+		header("Location:../production/kategori-duzenle.php?durum=ok&kategori_id=$kategori_id");
+	} else {
+		header("Location:../production/kategori-duzenle.php?durum=no&kategori_id=$kategori_id");
+	}
+}
+
 if (isset($_POST['sifredegistir'])) {
 	$kullanici_id = $_POST['kullanici_id'];
 	if ($_POST['kullanici_yenisifre']==$_POST['kullanici_yenisifretekrar']) {
