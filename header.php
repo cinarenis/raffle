@@ -17,6 +17,9 @@ $kullanicisor->execute(array(
 $say=$kullanicisor->rowCount();
 $kullanicicek=$kullanicisor->fetch(PDO::FETCH_ASSOC);
 
+$kategorisor=$db->prepare("SELECT * FROM kategori ORDER BY kategori_sira ASC");
+$kategorisor->execute();
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
