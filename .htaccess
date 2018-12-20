@@ -13,7 +13,7 @@ RewriteCond %{REQUEST_FILENAME}\.php -f
 RewriteRule ^(.*)$ $1.php
 
 #404 hata sayfası yönlendirme kodu bulunamayan sayfalarda aşağıdaki linke gitmesini sağlıyor.
-#ErrorDocument 404 http://site_adi.com/404.html
+ErrorDocument 404 http://localhost/404.html
 
 #Eğer menü URL doluysa o url ye gider yani daha önceden hazırlanmış sayfaya, boşsa menu_detay içindekiler gözükür.
 RewriteRule ^sayfa-([0-9a-zA-Z-_]+) menu-detay.php?sef=$1 [L,QSA]
