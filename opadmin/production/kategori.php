@@ -58,17 +58,17 @@ $kategorisor->execute();
                   <tr>
                     <td width="15px"><center><?php echo $say; ?></center></td>
                     <td><?php echo $kategoricek['kategori_ad']; ?></td>
-                    <td><?php echo $kategoricek['kategori_sira']; ?></td>
-                    <td><?php echo $kategoricek['kategori_ust']; ?></td>
-                    <td  width="15px"><?php 
+                    <td align="center" width="25px"><?php echo $kategoricek['kategori_sira']; ?></td>
+                    <td align="center" width="25px"><?php echo $kategoricek['kategori_ust']; ?></td>
+                    <td  width="25px"><?php 
                     if ($kategoricek['kategori_durum'] == 1) { ?>
                       <center><button class="btn btn-success btn-xs">Aktif</button></center>
                      <?php } else{ ?>
                       <center><button class="btn btn-danger btn-xs">Pasif</button></center>
                      <?php } ?>
                     </td>
-                    <td width="15px"><center><a href="kategori-duzenle.php?kategori_id=<?php echo $kategoricek['kategori_id']; ?>"><button class="btn btn-primary btn-xs">Düzenle</button></a></center></td>
-                    <td width="15px"><center><a href="../raffle/islem.php?kategori_id=<?php echo $kategoricek['kategori_id']; ?>&kategorisil=ok"><button class="btn btn-danger btn-xs">Sil</button></a></center></td>
+                    <td width="25px"><center><a href="kategori-duzenle.php?kategori_id=<?php echo $kategoricek['kategori_id']; ?>"><button class="btn btn-primary btn-xs">Düzenle</button></a></center></td>
+                    <td width="25px"><center><a href="../raffle/islem.php?kategori_id=<?php echo $kategoricek['kategori_id']; ?>&kategorisil=ok"><button class="btn btn-danger btn-xs">Sil</button></a></center></td>
                   </tr>
                 <?php  }
                 ?>

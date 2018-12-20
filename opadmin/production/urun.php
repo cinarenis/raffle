@@ -58,17 +58,17 @@ $urunsor->execute();
                   <tr>
                     <td width="15px"><center><?php echo $say; ?></center></td>
                     <td><?php echo $uruncek['urun_ad']; ?></td>
-                    <td><?php echo $uruncek['urun_fiyat']; ?></td>
-                    <td><?php echo $uruncek['urun_kalankisi']; ?></td>
-                    <td><?php 
+                    <td align="center" width="25px"><?php echo $uruncek['urun_fiyat']; ?></td>
+                    <td align="center" width="25px"><?php echo $uruncek['urun_kalankisi']; ?></td>
+                    <td width="25px"><?php 
                     if ($uruncek['urun_durum'] == 1) { ?>
                       <center><button class="btn btn-success btn-xs">Aktif</button></center>
                      <?php } else{ ?>
                       <center><button class="btn btn-danger btn-xs">Pasif</button></center>
                      <?php } ?>
                     </td>
-                    <td><center><a href="urun-duzenle.php?urun_id=<?php echo $uruncek['urun_id']; ?>"><button class="btn btn-primary btn-xs">Düzenle</button></a></center></td>
-                    <td><center><a href="../raffle/islem.php?urun_id=<?php echo $uruncek['urun_id']; ?>&urunsil=ok"><button class="btn btn-danger btn-xs">Sil</button></a></center></td>
+                    <td width="25px"><center><a href="urun-duzenle.php?urun_id=<?php echo $uruncek['urun_id']; ?>"><button class="btn btn-primary btn-xs">Düzenle</button></a></center></td>
+                    <td width="25px"><center><a href="../raffle/islem.php?urun_id=<?php echo $uruncek['urun_id']; ?>&urunsil=ok"><button class="btn btn-danger btn-xs">Sil</button></a></center></td>
                   </tr>
                 <?php  }
                 ?>

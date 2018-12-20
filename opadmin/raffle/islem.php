@@ -4,6 +4,18 @@ session_start();
 include 'baglan.php';
 include '../production/fonksiyon.php';
 
+if ($_GET['urunsil']=="ok") {
+	$sil=$db->prepare("DELETE from urun where urun_id=:urun_id");
+	$kontrol=$sil->execute(array(
+		'urun_id' => $_GET['urun_id']
+		));
+	if ($kontrol) {
+		header("Location:../production/urun.php?sil=ok");
+	} else {
+		header("Location:../production/urun.php?sil=no");
+	}
+}
+
 if (isset($_POST['kategoriekle'])) {
 	$kategori_seourl=seo($_POST['kategori_ad']);
 	$kaydet=$db->prepare("INSERT INTO kategori SET
@@ -82,9 +94,9 @@ if (isset($_POST['sifredegistir'])) {
 					));
 				}
 				if ($update) {
-					header("Location:../../sifredegistir.php?kullanici_id=$kullanici_id&durum=ok");
+					header("Location:../../sifredegistir.php?durum=ok&kullanici_id=$kullanici_id");
 				} else {
-					header("Location:../../sifredegistir.php?kullanici_id=$kullanici_id&durum=no");
+					header("Location:../../sifredegistir.php?durum=no&kullanici_id=$kullanici_id");
 				}
 			}
 		} else {
@@ -109,9 +121,9 @@ if (isset($_POST['iletisimbilgilerimkaydet'])) {
 	));
 
 	if($update) {
-		header("Location:../../iletisimbilgilerim.php?kullanici_id=$kullanici_id&durum=ok");
+		header("Location:../../iletisimbilgilerim.php?durum=ok&kullanici_id=$kullanici_id");
 	} else {
-		header("Location:../../iletisimbilgilerim.php?kullanici_id=$kullanici_id&durum=no");
+		header("Location:../../iletisimbilgilerim.php?durum=no&kullanici_id=$kullanici_id");
 	}
 }
 
@@ -129,9 +141,9 @@ if (isset($_POST['bilgilerimkaydet'])) {
 	));
 
 	if($update) {
-		header("Location:../../hesabim.php?kullanici_id=$kullanici_id&durum=ok");
+		header("Location:../../hesabim.php?durum=ok&kullanici_id=$kullanici_id");
 	} else {
-		header("Location:../../hesabim.php?kullanici_id=$kullanici_id&durum=no");
+		header("Location:../../hesabim.php?durum=no&kullanici_id=$kullanici_id");
 	}
 }
 
@@ -202,9 +214,9 @@ if (isset($_POST['sliderresimduzenle'])) {
 	if ($update) {
 		$logosilunlink=$_POST['eski_yol'];
 		unlink("../../$logosilunlink");
-		header("Location:../production/slider-duzenle.php?slider_id=$slider_id&durum=ok");
+		header("Location:../production/slider-duzenle.php?durum=ok&slider_id=$slider_id");
 	} else {
-		header("Location:../production/slider-duzenle.php?slider_id=$slider_id&durum=no");
+		header("Location:../production/slider-duzenle.php?durum=no&slider_id=$slider_id");
 	}
 }
 
@@ -227,14 +239,14 @@ if (isset($_POST['sliderduzenle'])) {
 	));
 
 	if($update) {
-		header("Location:../production/slider-duzenle.php?slider_id=$slider_id&durum=ok");
+		header("Location:../production/slider-duzenle.php?durum=ok&slider_id=$slider_id");
 	} else {
-		header("Location:../production/slider-duzenle.php?slider_id=$slider_id&durum=no");
+		header("Location:../production/slider-duzenle.php?durum=no&slider_id=$slider_id");
 	}
 }
 
 if ($_GET['slidersil']=="ok") {
-	$sil=$db->prepare("DELETE from slider WHERE slider_id=:id");
+	$sil=$db->prepare("DELETE FROM slider WHERE slider_id=:id");
 	$kontrol=$sil->execute(array(
 		'id' => $_GET['slider_id']
 	));
@@ -320,7 +332,7 @@ if (isset($_POST['admingiris'])) {
 
 	if ($say==1) {
 		$_SESSION['kullanici_mail'] = $kullanici_mail;
-		header("Location:../production/index.php");
+		header("Location:../production/index.php?durum=loginbasarili");
 	} else {
 		header("Location:../production/login.php?durum=no");
 	}
@@ -505,14 +517,14 @@ if (isset($_POST['kullaniciduzenle'])) {
 	));
 
 	if($update) {
-		header("Location:../production/kullanici-duzenle.php?kullanici_id=$kullanici_id&durum=ok");
+		header("Location:../production/kullanici-duzenle.php?durum=ok&kullanici_id=$kullanici_id");
 	} else {
-		header("Location:../production/kullanici-duzenle.php?kullanici_id=$kullanici_id&durum=no");
+		header("Location:../production/kullanici-duzenle.php?durum=no&kullanici_id=$kullanici_id");
 	}
 }
 
 if ($_GET['kullanicisil']=="ok") {
-	$sil=$db->prepare("DELETE from kullanici WHERE kullanici_id=:id");
+	$sil=$db->prepare("DELETE FROM kullanici WHERE kullanici_id=:id");
 	$kontrol=$sil->execute(array(
 		'id' => $_GET['kullanici_id']
 	));
@@ -545,14 +557,14 @@ if (isset($_POST['menuduzenle'])) {
 	));
 
 	if($update) {
-		header("Location:../production/menu-duzenle.php?menu_id=$menu_id&durum=ok");
+		header("Location:../production/menu-duzenle.php?durum=ok&menu_id=$menu_id");
 	} else {
-		header("Location:../production/menu-duzenle.php?menu_id=$menu_id&durum=no");
+		header("Location:../production/menu-duzenle.php?durum=no&menu_id=$menu_id");
 	}
 }
 
 if ($_GET['menusil']=="ok") {
-	$sil=$db->prepare("DELETE from menu WHERE menu_id=:id");
+	$sil=$db->prepare("DELETE FROM menu WHERE menu_id=:id");
 	$kontrol=$sil->execute(array(
 		'id' => $_GET['menu_id']
 	));

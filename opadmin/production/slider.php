@@ -61,16 +61,16 @@ $slidersor->execute();
                     <td align="center"><img width="200" src="../../<?php echo $slidercek['slider_resimyol']; ?>"></td>
                     <td align="center"><?php echo $slidercek['slider_ad']; ?></td>
                     <td align="center"><?php echo $slidercek['slider_aciklama']; ?></td>
-                    <td width="15px" align="center"><?php echo $slidercek['slider_sira']; ?></td>
-                    <td><?php 
+                    <td width="25px" align="center"><?php echo $slidercek['slider_sira']; ?></td>
+                    <td width="25px"><?php 
                     if ($slidercek['slider_durum'] == 1) { ?>
                       <center><button class="btn btn-success btn-xs">Aktif</button></center>
                      <?php } else{ ?>
                       <center><button class="btn btn-danger btn-xs">Pasif</button></center>
                      <?php } ?>
                     </td>
-                    <td><center><a href="slider-duzenle.php?slider_id=<?php echo $slidercek['slider_id']; ?>"><button class="btn btn-primary btn-xs">Düzenle</button></a></center></td>
-                    <td><center><a href="../raffle/islem.php?slider_id=<?php echo $slidercek['slider_id']; ?>&slider_resimyol=<?php echo $slidercek['slider_resimyol']; ?>&slidersil=ok"><button class="btn btn-danger btn-xs">Sil</button></a></center></td>
+                    <td width="25px"><center><a href="slider-duzenle.php?slider_id=<?php echo $slidercek['slider_id']; ?>"><button class="btn btn-primary btn-xs">Düzenle</button></a></center></td>
+                    <td width="25px"><center><a href="../raffle/islem.php?slider_id=<?php echo $slidercek['slider_id']; ?>&slider_resimyol=<?php echo $slidercek['slider_resimyol']; ?>&slidersil=ok"><button class="btn btn-danger btn-xs">Sil</button></a></center></td>
                   </tr>
                 <?php  }
                 ?>
