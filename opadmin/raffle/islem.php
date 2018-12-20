@@ -4,6 +4,26 @@ session_start();
 include 'baglan.php';
 include '../production/fonksiyon.php';
 
+if (isset($_POST['iletisimbilgilerimkaydet'])) {
+	$kullanici_id = $_POST['kullanici_id'];
+	$ayarkaydet=$db->prepare("UPDATE kullanici SET
+		kullanici_il=:kullanici_il,
+		kullanici_ilce=:kullanici_ilce,
+		kullanici_adres=:kullanici_adres
+		WHERE kullanici_id={$_POST['kullanici_id']}");
+	$update=$ayarkaydet->execute(array(
+		'kullanici_il' => $_POST['kullanici_il'],
+		'kullanici_ilce' => $_POST['kullanici_ilce'],
+		'kullanici_adres' => $_POST['kullanici_adres']
+	));
+
+	if($update) {
+		header("Location:../../iletisimbilgilerim.php?kullanici_id=$kullanici_id&durum=ok");
+	} else {
+		header("Location:../../iletisimbilgilerim.php?kullanici_id=$kullanici_id&durum=no");
+	}
+}
+
 if (isset($_POST['bilgilerimkaydet'])) {
 	$kullanici_id = $_POST['kullanici_id'];
 	$ayarkaydet=$db->prepare("UPDATE kullanici SET
