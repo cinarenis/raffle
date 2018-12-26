@@ -4,6 +4,37 @@ session_start();
 include 'baglan.php';
 include '../production/fonksiyon.php';
 
+if (isset($_POST['urunekle'])) {
+	$urun_seourl=seo($_POST['urun_ad']);
+	$kaydet=$db->prepare("INSERT INTO urun SET
+		kategori_id=:kategori_id,
+		urun_ad=:urun_ad,
+		urun_detay=:urun_detay,
+		urun_keyword=:urun_keyword,
+		urun_fiyat=:urun_fiyat,
+		urun_kisi=:urun_kisi,
+		urun_kalankisi=:urun_kalankisi,
+		urun_durum=:urun_durum,
+		urun_seourl=:urun_seourl		
+		");
+	$insert=$kaydet->execute(array(
+		'kategori_id' => $_POST['kategori_id'],
+		'urun_ad' => $_POST['urun_ad'],
+		'urun_detay' => $_POST['urun_detay'],
+		'urun_keyword' => $_POST['urun_keyword'],
+		'urun_fiyat' => $_POST['urun_fiyat'],
+		'urun_kisi' => ($_POST['urun_fiyat']+($_POST['urun_fiyat']/10)),
+		'urun_kalankisi' => ($_POST['urun_fiyat']+($_POST['urun_fiyat']/10)),
+		'urun_durum' => $_POST['urun_durum'],
+		'urun_seourl' => $urun_seourl
+		));
+	if ($insert) {
+		header("Location:../production/urun.php?durum=ok");
+	} else {
+		header("Location:../production/urun.php?durum=no");
+	}
+}
+
 if (isset($_POST['urunduzenle'])) {
 	$urun_id=$_POST['urun_id'];
 	$urun_seourl=seo($_POST['urun_ad']);
