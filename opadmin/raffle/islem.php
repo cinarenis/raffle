@@ -27,7 +27,7 @@ if (isset($_POST['urunekle'])) {
 		'urun_kalankisi' => ($_POST['urun_fiyat']+($_POST['urun_fiyat']/10)),
 		'urun_durum' => $_POST['urun_durum'],
 		'urun_seourl' => $urun_seourl
-		));
+	));
 	if ($insert) {
 		header("Location:../production/urun.php?durum=ok");
 	} else {
@@ -55,7 +55,7 @@ if (isset($_POST['urunduzenle'])) {
 		'urun_kisi' => $_POST['urun_kisi'],
 		'urun_durum' => $_POST['urun_durum'],
 		'urun_seourl' => $urun_seourl
-		));
+	));
 	if ($update) {
 		header("Location:../production/urun-duzenle.php?durum=ok&urun_id=$urun_id");
 	} else {
@@ -67,7 +67,7 @@ if ($_GET['urunsil']=="ok") {
 	$sil=$db->prepare("DELETE from urun where urun_id=:urun_id");
 	$kontrol=$sil->execute(array(
 		'urun_id' => $_GET['urun_id']
-		));
+	));
 	if ($kontrol) {
 		header("Location:../production/urun.php?sil=ok");
 	} else {
@@ -88,7 +88,7 @@ if (isset($_POST['kategoriekle'])) {
 		'kategori_durum' => $_POST['kategori_durum'],
 		'kategori_seourl' => $kategori_seourl,
 		'kategori_sira' => $_POST['kategori_sira']		
-		));
+	));
 	if ($insert) {
 		header("Location:../production/kategori.php?durum=ok");
 	} else {
@@ -100,7 +100,7 @@ if ($_GET['kategorisil']=="ok") {
 	$sil=$db->prepare("DELETE FROM kategori WHERE kategori_id=:kategori_id");
 	$kontrol=$sil->execute(array(
 		'kategori_id' => $_GET['kategori_id']
-		));
+	));
 	if ($kontrol) {
 		header("Location:../production/kategori.php?sil=ok");
 	} else {
@@ -122,7 +122,7 @@ if (isset($_POST['kategoriduzenle'])) {
 		'kategori_durum' => $_POST['kategori_durum'],
 		'kategori_seourl' => $kategori_seourl,
 		'kategori_sira' => $_POST['kategori_sira']		
-		));
+	));
 	if ($update) {
 		header("Location:../production/kategori-duzenle.php?durum=ok&kategori_id=$kategori_id");
 	} else {
@@ -207,48 +207,50 @@ if (isset($_POST['bilgilerimkaydet'])) {
 }
 
 if (isset($_POST['kullanicikaydet'])) {
-	echo $kullanici_adsoyad=htmlspecialchars($_POST['kullanici_adsoyad']); echo "<br>";
-	echo $kullanici_mail=htmlspecialchars($_POST['kullanici_mail']); echo "<br>";
-	echo $kullanici_passwordone=$_POST['kullanici_passwordone']; echo "<br>";
-	echo $kullanici_passwordtwo=$_POST['kullanici_passwordtwo']; echo "<br>";
-	if ($kullanici_passwordone==$kullanici_passwordtwo) {
-		if (strlen($kullanici_passwordone)>=6) {
-			$kullanicisor=$db->prepare("SELECT * FROM kullanici WHERE kullanici_mail=:mail");
-			$kullanicisor->execute(array(
-				'mail' => $kullanici_mail
-			));
-			//dönen satır sayısını belirtir
-			$say=$kullanicisor->rowCount();
-			if ($say==0) {
-				//md5 fonksiyonu şifreyi md5 şifreli hale getirir.
-				$password=md5($kullanici_passwordone);
-				$kullanici_yetki=1;
-			//Kullanıcı kayıt işlemi yapılıyor...
-				$kullanicikaydet=$db->prepare("INSERT INTO kullanici SET
-					kullanici_adsoyad=:kullanici_adsoyad,
-					kullanici_mail=:kullanici_mail,
-					kullanici_password=:kullanici_password,
-					kullanici_yetki=:kullanici_yetki
-					");
-				$insert=$kullanicikaydet->execute(array(
-					'kullanici_adsoyad' => $kullanici_adsoyad,
-					'kullanici_mail' => $kullanici_mail,
-					'kullanici_password' => $password,
-					'kullanici_yetki' => $kullanici_yetki
+	$kullanici_adsoyad=htmlspecialchars($_POST['kullanici_adsoyad']); echo "<br>";
+	$kullanici_mail=htmlspecialchars($_POST['kullanici_mail']); echo "<br>";
+	$kullanici_passwordone=$_POST['kullanici_passwordone']; echo "<br>";
+	$kullanici_passwordtwo=$_POST['kullanici_passwordtwo']; echo "<br>";
+	if ($kullanici_mail!='' & $kullanici_adsoyad!='') {
+		if ($kullanici_passwordone==$kullanici_passwordtwo) {
+			if (strlen($kullanici_passwordone)>=6) {
+				$kullanicisor=$db->prepare("SELECT * FROM kullanici WHERE kullanici_mail=:mail");
+				$kullanicisor->execute(array(
+					'mail' => $kullanici_mail
 				));
-				if ($insert) {
-					header("Location:../../index.php?durum=loginbasarili");
+			//dönen satır sayısını belirtir
+				$say=$kullanicisor->rowCount();
+				if ($say==0) {
+				//md5 fonksiyonu şifreyi md5 şifreli hale getirir.
+					$password=md5($kullanici_passwordone);
+					$kullanici_yetki=1;
+			//Kullanıcı kayıt işlemi yapılıyor...
+					$kullanicikaydet=$db->prepare("INSERT INTO kullanici SET
+						kullanici_adsoyad=:kullanici_adsoyad,
+						kullanici_mail=:kullanici_mail,
+						kullanici_password=:kullanici_password,
+						kullanici_yetki=:kullanici_yetki
+						");
+					$insert=$kullanicikaydet->execute(array(
+						'kullanici_adsoyad' => $kullanici_adsoyad,
+						'kullanici_mail' => $kullanici_mail,
+						'kullanici_password' => $password,
+						'kullanici_yetki' => $kullanici_yetki
+					));
+					if ($insert) {
+						header("Location:../../index.php?durum=loginbasarili");
+					} else {
+						header("Location:../../oturum.php?durum=basarisiz");
+					}
 				} else {
-					header("Location:../../oturum.php?durum=basarisiz");
+					header("Location:../../oturum.php?durum=kullanicivar");
 				}
 			} else {
-				header("Location:../../oturum.php?durum=kullanicivar");
+				header("Location:../../oturum.php?durum=eksiksifre");
 			}
 		} else {
-			header("Location:../../oturum.php?durum=eksiksifre");
+			header("Location:../../oturum.php?durum=farklisifre");
 		}
-	} else {
-		header("Location:../../oturum.php?durum=farklisifre");
 	}
 }
 
