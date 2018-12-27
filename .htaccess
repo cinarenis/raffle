@@ -17,3 +17,6 @@ ErrorDocument 404 http://localhost/404.html
 
 #Eğer menü URL doluysa o url ye gider yani daha önceden hazırlanmış sayfaya, boşsa menu_detay içindekiler gözükür.
 RewriteRule ^sayfa-([0-9a-zA-Z-_]+) menu-detay.php?sef=$1 [L,QSA]
+
+#Eğer kategori ismi sef? ile gelirse aşağıdaki sayfaya gider
+RewriteRule ^kategori-([0-9a-zA-Z-_]+) kategori.php?sef=$1 [L,QSA]

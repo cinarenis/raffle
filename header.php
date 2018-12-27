@@ -17,9 +17,6 @@ $kullanicisor->execute(array(
 $say=$kullanicisor->rowCount();
 $kullanicicek=$kullanicisor->fetch(PDO::FETCH_ASSOC);
 
-$kategorisor=$db->prepare("SELECT * FROM kategori ORDER BY kategori_sira ASC");
-$kategorisor->execute();
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -124,7 +121,7 @@ $kategorisor->execute();
 						</div>
 						<div class="mainmenu pull-left">
 							<ul class="nav navbar-nav collapse navbar-collapse">
-								<li><a href="index.php" class="active">Anasayfa</a></li>
+								<li><a href="index.php">Anasayfa</a></li>
 								<?php 
 								$menusor=$db->prepare("SELECT * FROM menu Where menu_durum=:durum order by menu_sira ASC");
 								$menusor->execute(array(

@@ -4,8 +4,11 @@
 		<div class="panel-group category-products" id="accordian"><!--category-productsr-->
 			<div class="panel panel-default">
 				<div class="panel-heading">
-					<?php while($kategoricek=$kategorisor->fetch(PDO::FETCH_ASSOC)) { ?>
-						<h4 class="panel-title"><a href="#"><?php echo $kategoricek['kategori_ad']; ?></a></h4>
+					<?php 
+					$kategorisor=$db->prepare("SELECT * FROM kategori ORDER BY kategori_sira ASC");
+					$kategorisor->execute();
+					while($kategoricek=$kategorisor->fetch(PDO::FETCH_ASSOC)) { ?>
+						<h4 class="panel-title"><a href="kategori-<?=seo($kategoricek['kategori_ad']) ?>"><?php echo $kategoricek['kategori_ad']; ?></a></h4>
 					<?php } ?>
 				</div>
 			</div>
