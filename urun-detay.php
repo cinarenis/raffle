@@ -110,13 +110,10 @@ if ($say==0) {
 
 								<?php 
 								if (isset($_SESSION['userkullanici_mail'])) { ?>
-									<form action="#">
-										<span>
-											<input type="text" placeholder="Ad Soyad"/>
-											<input type="email" placeholder="E-mail Adresi"/>
-										</span>
-										<textarea name="" ></textarea>
-										<button type="button" class="btn btn-default pull-right">
+									<form action="opadmin/raffle/islem.php" method="post">
+										<textarea name="yorum_detay" placeholder="Yorum Yazınız..."></textarea>
+										<input type="hidden" name="kullanici_id" value="<?php echo $kullanicicek['kullanici_id']; ?>">
+										<button type="submit" name="yorumkaydet" class="btn btn-default pull-right">
 											Yorum Gönder
 										</button>
 									</form>

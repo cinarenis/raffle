@@ -126,7 +126,7 @@ if ($say==0) {
 									<span class=" fa fa-angle-down"></span>
 								</a>
 								<ul class="dropdown-menu dropdown-usermenu pull-right">
-									<li><a href="javascript:;"> Profil Bilgilerim</a></li>
+									<li><a href="kullanici-duzenle.php?kullanici_id=<?php echo $kullanicicek['kullanici_id']; ?>"> Profil Bilgilerim</a></li>
 									<li><a href="logout.php"><i class="fa fa-sign-out pull-right"></i> Çıkış Yap</a></li>
 								</ul>
 							</li>

@@ -12,7 +12,8 @@ include 'slider.php';
 				<div class="features_items"><!--features_items-->
 					<h2 class="title text-center">Öne Çıkan Ürünler</h2>
 					<?php 
-					$urunanasayfasor=$db->prepare("SELECT * FROM urun ORDER BY urun_kalankisi ASC LIMIT 15");
+					// Bu Sorgu Anasayfada katılankişi/toplamkişi*100 işlemi yapılarak en fazla yüzde kaç katılım olduysa onu ilk gösterir
+					$urunanasayfasor=$db->prepare("SELECT * FROM urun ORDER BY ((urun_kisi-urun_kalankisi)/urun_kisi)*100 DESC LIMIT 15");
 					$urunanasayfasor->execute();
 					while($urunanasayfacek=$urunanasayfasor->fetch(PDO::FETCH_ASSOC)) {
 						?>
