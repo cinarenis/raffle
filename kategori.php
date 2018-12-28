@@ -49,7 +49,7 @@ Reklam Ekleme Alanı Bitiş-->
 								<div class="single-products">
 									<div class="productinfo text-center">
 										<img src="images/shop/product12.jpg" alt="" />
-										<h2><?php echo $uruncek['urun_kalankisi']; ?> Toplam Kişi</h2>
+										<h2><?php echo $uruncek['urun_kisi']; ?> Toplam Kişi</h2>
 										<p><?php echo $uruncek['urun_ad']; ?></p>
 										<a href="urun-<?=seo($uruncek["urun_ad"]).'-'.$uruncek["urun_id"]?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Çekilişe Katıl</a>
 									</div>

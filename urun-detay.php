@@ -132,93 +132,41 @@ if ($say==0) {
 				</div><!--/category-tab-->
 
 				<div class="recommended_items"><!--recommended_items-->
-					<h2 class="title text-center">recommended items</h2>
+					<h2 class="title text-center">İlginizi Çekebilecek Ürünler</h2>
 
 					<div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
 						<div class="carousel-inner">
-							<div class="item active">	
-								<div class="col-sm-4">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center">
-												<img src="images/home/recommend1.jpg" alt="" />
-												<h2>$56</h2>
-												<p>Easy Polo Black Edition</p>
-												<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
+							<?php 
+							$kategori_id=$uruncek['kategori_id'];
+							$urunaltsor=$db->prepare("SELECT * FROM urun WHERE kategori_id=:kategori_id ORDER BY  rand() LIMIT 3");
+							$urunaltsor->execute(array(
+								'kategori_id' => $kategori_id
+							));
+							while($urunaltcek=$urunaltsor->fetch(PDO::FETCH_ASSOC)) {
+								?>
+								<div class="item active">	
+									<div class="col-sm-4">
+										<div class="product-image-wrapper">
+											<div class="single-products">
+												<div class="productinfo text-center">
+													<img src="images/home/recommend1.jpg" alt="" />
+													<h2><?php echo $urunaltcek['urun_kalankisi']; echo $ilgilisay; ?> Kişi Kaldı</h2>
+													<p><?php echo $urunaltcek['urun_ad']; ?></p>
+													<a href="urun-<?=seo($urunaltcek["urun_ad"]).'-'.$urunaltcek["urun_id"]?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Çekilişe Katıl</a>
+												</div>
 											</div>
 										</div>
 									</div>
 								</div>
-								<div class="col-sm-4">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center">
-												<img src="images/home/recommend2.jpg" alt="" />
-												<h2>$56</h2>
-												<p>Easy Polo Black Edition</p>
-												<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-sm-4">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center">
-												<img src="images/home/recommend3.jpg" alt="" />
-												<h2>$56</h2>
-												<p>Easy Polo Black Edition</p>
-												<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="item">	
-								<div class="col-sm-4">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center">
-												<img src="images/home/recommend1.jpg" alt="" />
-												<h2>$56</h2>
-												<p>Easy Polo Black Edition</p>
-												<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-sm-4">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center">
-												<img src="images/home/recommend2.jpg" alt="" />
-												<h2>$56</h2>
-												<p>Easy Polo Black Edition</p>
-												<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-sm-4">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center">
-												<img src="images/home/recommend3.jpg" alt="" />
-												<h2>$56</h2>
-												<p>Easy Polo Black Edition</p>
-												<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
+							<?php } ?>
 						</div>
-						<a class="left recommended-item-control" href="#recommended-item-carousel" data-slide="prev">
+						<!-- <a class="left recommended-item-control" href="#recommended-item-carousel" data-slide="prev">
 							<i class="fa fa-angle-left"></i>
 						</a>
 						<a class="right recommended-item-control" href="#recommended-item-carousel" data-slide="next">
 							<i class="fa fa-angle-right"></i>
-						</a>			
+						</a>
+						-->	
 					</div>
 				</div><!--/recommended_items-->
 
