@@ -16,6 +16,7 @@ if (isset($_GET['sef'])) {
 } else {
 	$urunsor=$db->prepare("SELECT * FROM urun ORDER BY urun_id DESC");
 	$urunsor->execute();
+	$say=$urunsor->rowCount();
 }
 
 ?>
@@ -50,14 +51,14 @@ Reklam Ekleme Alanı Bitiş-->
 										<img src="images/shop/product12.jpg" alt="" />
 										<h2><?php echo $uruncek['urun_kalankisi']; ?> Toplam Kişi</h2>
 										<p><?php echo $uruncek['urun_ad']; ?></p>
-										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Sepete Ekle</a>
+										<a href="urun-<?=seo($uruncek["urun_ad"]).'-'.$uruncek["urun_id"]?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Çekilişe Katıl</a>
 									</div>
 									<div class="product-overlay">
 										<div class="overlay-content">
 											<p><?php echo $uruncek['urun_detay']; ?></p>
 											<h2><?php echo $uruncek['urun_kalankisi']; ?> Kişi Kaldı</h2>
 											<p><?php echo $uruncek['urun_ad']; ?></p>
-											<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Sepete Ekle</a>
+											<a href="urun-<?=seo($uruncek["urun_ad"]).'-'.$uruncek["urun_id"]?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Çekilişe Katıl</a>
 										</div>
 									</div>
 								</div>
