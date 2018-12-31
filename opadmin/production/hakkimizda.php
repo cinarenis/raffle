@@ -6,8 +6,8 @@ $hakkimizdasor->execute(array(
   'id' => 0
 ));
 $hakkimizdacek=$hakkimizdasor->fetch(PDO::FETCH_ASSOC);
-
 ?>
+
 <!-- page content -->
 <div class="right_col" role="main">
   <div class="">
@@ -40,7 +40,7 @@ $hakkimizdacek=$hakkimizdasor->fetch(PDO::FETCH_ASSOC);
                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="hakkimizda_baslik">Başlık <span class="required">*</span>
                 </label>
                 <div class="col-md-6 col-sm-6 col-xs-12">
-                  <input type="text" id="hakkimizda_baslik" name="hakkimizda_baslik" value="<?php echo $hakkimizdacek['hakkimizda_baslik'] ?>" required="required" class="form-control col-md-7 col-xs-12">
+                  <input type="text" id="hakkimizda_baslik" name="hakkimizda_baslik" value="<?php echo $hakkimizdacek['hakkimizda_baslik']; ?>" required="required" class="form-control col-md-7 col-xs-12">
                 </div>
               </div>
               <!-- Ck Editör Başlangıç --> 
@@ -48,7 +48,7 @@ $hakkimizdacek=$hakkimizdasor->fetch(PDO::FETCH_ASSOC);
                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="hakkimizda_icerik">İçerik <span class="required">*</span>
                 </label>
                 <div class="col-md-6 col-sm-6 col-xs-12">
-                  <textarea class="ckeditor" id="editor1" name="hakkimizda_icerik"><?php echo $hakkimizdacek['hakkimizda_icerik'] ?></textarea>
+                  <textarea class="ckeditor" id="editor1" name="hakkimizda_icerik"><?php echo $hakkimizdacek['hakkimizda_icerik']; ?></textarea>
                 </div>
               </div>
               <script type="text/javascript">
@@ -65,24 +65,24 @@ $hakkimizdacek=$hakkimizdasor->fetch(PDO::FETCH_ASSOC);
               </script>
               <!-- CK Editör Bitiş -->
               <div class="form-group">
-                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="hakkimizda_video">Video <span class="required">*</span>
+                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="hakkimizda_video">Video 
                 </label>
                 <div class="col-md-6 col-sm-6 col-xs-12">
-                  <input type="text" id="hakkimizda_video" name="hakkimizda_video" value="<?php echo $hakkimizdacek['hakkimizda_video'] ?>" required="required" class="form-control col-md-7 col-xs-12">
+                  <input type="text" id="hakkimizda_video" name="hakkimizda_video" value="<?php echo $hakkimizdacek['hakkimizda_video']; ?>" class="form-control col-md-7 col-xs-12">
                 </div>
               </div>
               <div class="form-group">
-                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="hakkimizda_vizyon">Vizyon <span class="required">*</span>
+                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="hakkimizda_vizyon">Vizyon 
                 </label>
                 <div class="col-md-6 col-sm-6 col-xs-12">
-                  <input type="text" id="hakkimizda_vizyon" name="hakkimizda_vizyon" value="<?php echo $hakkimizdacek['hakkimizda_vizyon'] ?>" required="required" class="form-control col-md-7 col-xs-12">
+                  <input type="text" id="hakkimizda_vizyon" name="hakkimizda_vizyon" value="<?php echo $hakkimizdacek['hakkimizda_vizyon']; ?>" class="form-control col-md-7 col-xs-12">
                 </div>
               </div>
               <div class="form-group">
-                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="hakkimizda_misyon">Misyon <span class="required">*</span>
+                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="hakkimizda_misyon">Misyon 
                 </label>
                 <div class="col-md-6 col-sm-6 col-xs-12">
-                  <input type="text" id="hakkimizda_misyon" name="hakkimizda_misyon" value="<?php echo $hakkimizdacek['hakkimizda_misyon'] ?>" required="required" class="form-control col-md-7 col-xs-12">
+                  <input type="text" id="hakkimizda_misyon" name="hakkimizda_misyon" value="<?php echo $hakkimizdacek['hakkimizda_misyon']; ?>" class="form-control col-md-7 col-xs-12">
                 </div>
               </div>
               <div class="ln_solid"></div>
@@ -99,6 +99,7 @@ $hakkimizdacek=$hakkimizdasor->fetch(PDO::FETCH_ASSOC);
   </div>
 </div>
 <!-- /page content -->
+
 <?php 
 include 'footer.php';
 ?>

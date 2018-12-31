@@ -1,6 +1,7 @@
 <?php 
 include'header.php';
 ?>
+
 <!-- page content -->
 <div class="right_col" role="main">
   <div class="">
@@ -33,56 +34,56 @@ include'header.php';
                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="ayar_tel">Telefon Numarası <span class="required">*</span>
                 </label>
                 <div class="col-md-6 col-sm-6 col-xs-12">
-                  <input type="text" id="ayar_tel" name="ayar_tel" value="<?php echo $ayarcek['ayar_tel'] ?>" required="required" class="form-control col-md-7 col-xs-12">
+                  <input type="text" id="ayar_tel" name="ayar_tel" value="<?php echo $ayarcek['ayar_tel']; ?>" required="required" class="form-control col-md-7 col-xs-12">
                 </div>
               </div>
               <div class="form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="ayar_gsm">Telefon Numarası(GSM)
                 </label>
                 <div class="col-md-6 col-sm-6 col-xs-12">
-                  <input type="text" id="ayar_gsm" name="ayar_gsm" value="<?php echo $ayarcek['ayar_gsm'] ?>" class="form-control col-md-7 col-xs-12">
+                  <input type="text" id="ayar_gsm" name="ayar_gsm" value="<?php echo $ayarcek['ayar_gsm']; ?>" class="form-control col-md-7 col-xs-12">
                 </div>
               </div>
               <div class="form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="ayar_fax">Fax Numarası
                 </label>
                 <div class="col-md-6 col-sm-6 col-xs-12">
-                  <input type="text" id="ayar_fax" name="ayar_fax" value="<?php echo $ayarcek['ayar_fax'] ?>" class="form-control col-md-7 col-xs-12">
+                  <input type="text" id="ayar_fax" name="ayar_fax" value="<?php echo $ayarcek['ayar_fax']; ?>" class="form-control col-md-7 col-xs-12">
                 </div>
               </div>
-               <div class="form-group">
+              <div class="form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="ayar_mail">Mail Adresi <span class="required">*</span>
                 </label>
                 <div class="col-md-6 col-sm-6 col-xs-12">
-                  <input type="email" id="ayar_mail" name="ayar_mail" value="<?php echo $ayarcek['ayar_mail'] ?>" required="required" class="form-control col-md-7 col-xs-12">
+                  <input type="email" id="ayar_mail" name="ayar_mail" value="<?php echo $ayarcek['ayar_mail']; ?>" required="required" class="form-control col-md-7 col-xs-12">
                 </div>
               </div>
-               <div class="form-group">
+              <div class="form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="ayar_il">İl <span class="required">*</span>
                 </label>
                 <div class="col-md-6 col-sm-6 col-xs-12">
-                  <input type="text" id="ayar_il" name="ayar_il" value="<?php echo $ayarcek['ayar_il'] ?>" required="required" class="form-control col-md-7 col-xs-12">
+                  <input type="text" id="ayar_il" name="ayar_il" value="<?php echo $ayarcek['ayar_il']; ?>" required="required" class="form-control col-md-7 col-xs-12">
                 </div>
               </div>
               <div class="form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="ayar_ilce">İlçe <span class="required">*</span>
                 </label>
                 <div class="col-md-6 col-sm-6 col-xs-12">
-                  <input type="text" id="ayar_ilce" name="ayar_ilce" value="<?php echo $ayarcek['ayar_ilce'] ?>" required="required" class="form-control col-md-7 col-xs-12">
+                  <input type="text" id="ayar_ilce" name="ayar_ilce" value="<?php echo $ayarcek['ayar_ilce']; ?>" required="required" class="form-control col-md-7 col-xs-12">
                 </div>
               </div>
-               <div class="form-group">
+              <div class="form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="ayar_adres">Adres <span class="required">*</span>
                 </label>
                 <div class="col-md-6 col-sm-6 col-xs-12">
-                  <input type="text" id="ayar_adres" name="ayar_adres" value="<?php echo $ayarcek['ayar_adres'] ?>" required="required" class="form-control col-md-7 col-xs-12">
+                  <input type="text" id="ayar_adres" name="ayar_adres" value="<?php echo $ayarcek['ayar_adres']; ?>" required="required" class="form-control col-md-7 col-xs-12">
                 </div>
               </div>
               <div class="form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="ayar_mesai">Mesai <span class="required">*</span>
                 </label>
                 <div class="col-md-6 col-sm-6 col-xs-12">
-                  <input type="text" id="ayar_mesai" name="ayar_mesai" value="<?php echo $ayarcek['ayar_mesai'] ?>" required="required" class="form-control col-md-7 col-xs-12">
+                  <input type="text" id="ayar_mesai" name="ayar_mesai" value="<?php echo $ayarcek['ayar_mesai']; ?>" required="required" class="form-control col-md-7 col-xs-12">
                 </div>
               </div>
               <div class="ln_solid"></div>
@@ -99,6 +100,7 @@ include'header.php';
   </div>
 </div>
 <!-- /page content -->
+
 <?php 
 include 'footer.php';
 ?>

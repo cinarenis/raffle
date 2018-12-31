@@ -52,8 +52,8 @@
 	<div class="footer-bottom">
 		<div class="container">
 			<div class="row">
-				<p class="pull-left">Copyright © 2019 <?php echo $ayarcek['ayar_title']; ?>. All rights reserved.</p>
-				<p class="pull-right">Designed by <span><a target="_blank" href="http://<?php echo $ayarcek['ayar_url']; ?>"><?php echo $ayarcek['ayar_title']; ?></a></span></p>
+				<p class="pull-left">Copyright © 2019 <?php echo $ayarcek['ayar_title']; ?>. Tüm hakları saklıdır.</p>
+				<p class="pull-right">Tasarım <span><a target="_blank" href="http://<?php echo $ayarcek['ayar_url']; ?>"><?php echo $ayarcek['ayar_title']; ?></a></span></p>
 			</div>
 		</div>
 	</div>

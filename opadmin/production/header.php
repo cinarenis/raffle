@@ -20,8 +20,8 @@ $kullanicicek=$kullanicisor->fetch(PDO::FETCH_ASSOC);
 if ($say==0) {
 	header('Location:login.php?durum=izinsiz');
 }
-
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,9 +31,9 @@ if ($say==0) {
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="<?php echo $ayarcek['ayar_description']; ?>">
-    <meta name="keywords" content="<?php echo $ayarcek['ayar_keywords']; ?>">
-    <meta name="author" content="<?php echo $ayarcek['ayar_author']; ?>">
-	<title><?php echo $ayarcek['ayar_title'] ?> Admin Panel</title>
+	<meta name="keywords" content="<?php echo $ayarcek['ayar_keywords']; ?>">
+	<meta name="author" content="<?php echo $ayarcek['ayar_author']; ?>">
+	<title><?php echo $ayarcek['ayar_title']; ?> | Admin Panel</title>
 
 	<!-- Bootstrap -->
 	<link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -64,7 +64,7 @@ if ($say==0) {
 					<!-- menu profile quick info -->
 					<div class="profile clearfix">
 						<div class="profile_pic">
-							<img src="images/img.jpg" alt="Raffle and Advertising" class="img-circle profile_img">
+							<img src="images/img.jpg" alt="<?php echo $kullanicicek['kullanici_adsoyad']; ?>" class="img-circle profile_img">
 						</div>
 						<div class="profile_info">
 							<span>Hoşgeldiniz,</span>
@@ -122,7 +122,7 @@ if ($say==0) {
 						<ul class="nav navbar-nav navbar-right">
 							<li class="">
 								<a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-									<img src="images/img.jpg" alt=""><?php echo $kullanicicek['kullanici_adsoyad']; ?>
+									<img src="images/img.jpg" alt="<?php echo $kullanicicek['kullanici_adsoyad']; ?>"><?php echo $kullanicicek['kullanici_adsoyad']; ?>
 									<span class=" fa fa-angle-down"></span>
 								</a>
 								<ul class="dropdown-menu dropdown-usermenu pull-right">
@@ -133,26 +133,25 @@ if ($say==0) {
 
 							<li role="presentation" class="dropdown">
 								<a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
-									<i class="fa fa-envelope-o"></i>
-									<span class="badge bg-green">1</span>
+									<i class="fa fa-gift"></i>
+									<span class="badge bg-green">5</span>
 								</a>
 								<ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
 									<li>
 										<a>
 											<span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
 											<span>
-												<span>Enis ÇINAR</span>
-												<span class="time">5 gün önce</span>
+												<span>Çekilişe Katılan</span>
 											</span>
 											<span class="message">
-												Mesaj içerik...
+												Çekilişe Katıldığı ürün ismi...
 											</span>
 										</a>
 									</li>
 									<li>
 										<div class="text-center">
 											<a>
-												<strong>Tüm Bildirimleri Göster</strong>
+												<strong>Tüm Katılanları Göster</strong>
 												<i class="fa fa-angle-right"></i>
 											</a>
 										</div>

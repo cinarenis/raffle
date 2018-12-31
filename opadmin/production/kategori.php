@@ -2,8 +2,8 @@
 include 'header.php'; 
 $kategorisor=$db->prepare("SELECT * FROM kategori ORDER BY kategori_sira ASC");
 $kategorisor->execute();
-
 ?>
+
 <!-- page content -->
 <div class="right_col" role="main">
   <div class="">

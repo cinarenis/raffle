@@ -57,10 +57,18 @@ $kullanicicek=$kullanicisor->fetch(PDO::FETCH_ASSOC);
 					<div class="col-sm-6">
 						<div class="social-icons pull-right">
 							<ul class="nav navbar-nav">
+								<?php if($ayarcek['ayar_facebook']!=""){ ?>
 								<li><a href="http://<?php echo $ayarcek['ayar_facebook']; ?>"><i class="fa fa-facebook"></i></a></li>
+							<?php } ?>
+							<?php if($ayarcek['ayar_twitter']!=""){ ?>
 								<li><a href="http://<?php echo $ayarcek['ayar_twitter']; ?>"><i class="fa fa-twitter"></i></a></li>
+								<?php } ?>
+								<?php if($ayarcek['ayar_google']!=""){ ?>
 								<li><a href="http://<?php echo $ayarcek['ayar_google']; ?>"><i class="fa fa-google-plus"></i></a></li>
+								<?php } ?>
+								<?php if($ayarcek['ayar_youtube']!=""){ ?>
 								<li><a href="http://<?php echo $ayarcek['ayar_youtube']; ?>"><i class="fa fa-youtube"></i></a></li>
+								<?php } ?>
 							</ul>
 						</div>
 						<?php 

@@ -1,7 +1,7 @@
 <!-- footer content -->
 <footer>
   <div class="pull-right">
-    Copyright &copy; 2018 <a href="<?php echo $ayarcek['ayar_url'] ?>"><b><?php echo $ayarcek['ayar_title'] ?></b></a>
+    Copyright &copy; 2019 <a href="http://<?php echo $ayarcek['ayar_url'] ;?>"><b><?php echo $ayarcek['ayar_title']; ?></b></a>
   </div>
   <div class="clearfix"></div>
 </footer>

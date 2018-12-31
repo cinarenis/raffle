@@ -1,6 +1,7 @@
 <?php 
 include'header.php';
 ?>
+
 <!-- page content -->
 <div class="right_col" role="main">
   <div class="">
@@ -33,28 +34,28 @@ include'header.php';
                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="ayar_smtphost">SMTP Host <span class="required">*</span>
                 </label>
                 <div class="col-md-6 col-sm-6 col-xs-12">
-                  <input type="text" id="ayar_smtphost" name="ayar_smtphost" value="<?php echo $ayarcek['ayar_smtphost'] ?>" required="required" class="form-control col-md-7 col-xs-12">
+                  <input type="text" id="ayar_smtphost" name="ayar_smtphost" value="<?php echo $ayarcek['ayar_smtphost']; ?>" required="required" class="form-control col-md-7 col-xs-12">
                 </div>
               </div>
               <div class="form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="ayar_smtpuser">SMTP Username <span class="required">*</span>
                 </label>
                 <div class="col-md-6 col-sm-6 col-xs-12">
-                  <input type="text" id="ayar_smtpuser" name="ayar_smtpuser" value="<?php echo $ayarcek['ayar_smtpuser'] ?>" required="required" class="form-control col-md-7 col-xs-12">
+                  <input type="text" id="ayar_smtpuser" name="ayar_smtpuser" value="<?php echo $ayarcek['ayar_smtpuser']; ?>" required="required" class="form-control col-md-7 col-xs-12">
                 </div>
               </div>
               <div class="form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="ayar_smtppassword">SMTP Password <span class="required">*</span>
                 </label>
                 <div class="col-md-6 col-sm-6 col-xs-12">
-                  <input type="text" id="ayar_smtppassword" name="ayar_smtppassword" value="<?php echo $ayarcek['ayar_smtppassword'] ?>" required="required" class="form-control col-md-7 col-xs-12">
+                  <input type="text" id="ayar_smtppassword" name="ayar_smtppassword" value="<?php echo $ayarcek['ayar_smtppassword']; ?>" required="required" class="form-control col-md-7 col-xs-12">
                 </div>
               </div>
               <div class="form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="ayar_smtpport">SMTP Port <span class="required">*</span>
                 </label>
                 <div class="col-md-6 col-sm-6 col-xs-12">
-                  <input type="text" id="ayar_smtpport" name="ayar_smtpport" value="<?php echo $ayarcek['ayar_smtpport'] ?>" required="required" class="form-control col-md-7 col-xs-12">
+                  <input type="text" id="ayar_smtpport" name="ayar_smtpport" value="<?php echo $ayarcek['ayar_smtpport']; ?>" required="required" class="form-control col-md-7 col-xs-12">
                 </div>
               </div>
               <div class="ln_solid"></div>
@@ -71,6 +72,7 @@ include'header.php';
   </div>
 </div>
 <!-- /page content -->
+
 <?php 
 include 'footer.php';
 ?>

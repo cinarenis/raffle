@@ -1,0 +1,17 @@
+_Yapılacaklar
+
+Admin
+-api-ayar.php sayfasında ayarlanan analytics kodu index.php de çağırılacak, maps ve zopim siteye entegre edilecek.
+-hakkimizda.php içerik girilecek.
+-header.php'ye giriş yapan adminin resmi çekilecek(sol taraftaki-sag taraftaki-sağ en üstteki çekilişe katılanların gözüktüğü yerdeki).
+-header.php en üstte son 5 çekilişe katılanı gösterecek.
+-tüm çekilişe katılanların gösterileceği bir sayfa yapılacak.
+-kategori üst eklenecek(eklemede ve düzenlemede ayarlanacak).
+
+!erius
+-Siteye üye olurken kullanıcı adı inputu eklenecek.
+-Kargo alıcı öder
+-Kullanıcılar çekilişe katılabilmeleri için tüm bilgilerini doldurmaları gerekir.
+
+
+-kullanici_ad-kullanici_resim-kullanici_tel-kayit_zaman-

@@ -1,6 +1,7 @@
 <?php 
 include'header.php';
 ?>
+
 <!-- page content -->
 <div class="right_col" role="main">
   <div class="">
@@ -59,35 +60,35 @@ include'header.php';
                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="ayar_url">Site URL <span class="required">*</span>
                 </label>
                 <div class="col-md-6 col-sm-6 col-xs-12">
-                  <input type="text" id="ayar_url" name="ayar_url" value="<?php echo $ayarcek['ayar_url'] ?>" required="required" class="form-control col-md-7 col-xs-12">
+                  <input type="text" id="ayar_url" name="ayar_url" value="<?php echo $ayarcek['ayar_url']; ?>" required="required" class="form-control col-md-7 col-xs-12">
                 </div>
               </div>
               <div class="form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="ayar_title">Site Başlık <span class="required">*</span>
                 </label>
                 <div class="col-md-6 col-sm-6 col-xs-12">
-                  <input type="text" id="ayar_title" name="ayar_title" value="<?php echo $ayarcek['ayar_title'] ?>" required="required" class="form-control col-md-7 col-xs-12">
+                  <input type="text" id="ayar_title" name="ayar_title" value="<?php echo $ayarcek['ayar_title']; ?>" required="required" class="form-control col-md-7 col-xs-12">
                 </div>
               </div>
               <div class="form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="ayar_description">Site Açıklama <span class="required">*</span>
                 </label>
                 <div class="col-md-6 col-sm-6 col-xs-12">
-                  <input type="text" id="ayar_description" name="ayar_description" value="<?php echo $ayarcek['ayar_description'] ?>" required="required" class="form-control col-md-7 col-xs-12">
+                  <input type="text" id="ayar_description" name="ayar_description" value="<?php echo $ayarcek['ayar_description']; ?>" required="required" class="form-control col-md-7 col-xs-12">
                 </div>
               </div>
               <div class="form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="ayar_keywords">Site Anahtar Kelime <span class="required">*</span>
                 </label>
                 <div class="col-md-6 col-sm-6 col-xs-12">
-                  <input type="text" id="ayar_keywords" name="ayar_keywords" value="<?php echo $ayarcek['ayar_keywords'] ?>" required="required" class="form-control col-md-7 col-xs-12">
+                  <input type="text" id="ayar_keywords" name="ayar_keywords" value="<?php echo $ayarcek['ayar_keywords']; ?>" required="required" class="form-control col-md-7 col-xs-12">
                 </div>
               </div>
               <div class="form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="ayar_author">Site Yazar <span class="required">*</span>
                 </label>
                 <div class="col-md-6 col-sm-6 col-xs-12">
-                  <input type="text" id="ayar_author" name="ayar_author" value="<?php echo $ayarcek['ayar_author'] ?>" required="required" class="form-control col-md-7 col-xs-12">
+                  <input type="text" id="ayar_author" name="ayar_author" value="<?php echo $ayarcek['ayar_author']; ?>" required="required" class="form-control col-md-7 col-xs-12">
                 </div>
               </div>
               <div class="ln_solid"></div>
@@ -104,6 +105,7 @@ include'header.php';
   </div>
 </div>
 <!-- /page content -->
+
 <?php 
 include 'footer.php';
 ?>

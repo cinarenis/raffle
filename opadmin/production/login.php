@@ -6,8 +6,8 @@ $ayarsor->execute(array(
   'id' => 0
 ));
 $ayarcek=$ayarsor->fetch(PDO::FETCH_ASSOC);
-
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,9 +16,7 @@ $ayarcek=$ayarsor->fetch(PDO::FETCH_ASSOC);
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <title>Giriş | <?php echo $ayarcek['ayar_title'] ?></title>
-
+  <title><?php echo $ayarcek['ayar_title']; ?> | Giriş</title>
   <!-- Bootstrap -->
   <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
   <!-- Font Awesome -->
@@ -27,11 +25,9 @@ $ayarcek=$ayarsor->fetch(PDO::FETCH_ASSOC);
   <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
   <!-- Animate.css -->
   <link href="../vendors/animate.css/animate.min.css" rel="stylesheet">
-
   <!-- Custom Theme Style -->
   <link href="../build/css/custom.min.css" rel="stylesheet">
 </head>
-
 <body  class="login">
   <div>
     <a class="hiddenanchor" id="signup"></a>
@@ -64,8 +60,7 @@ $ayarcek=$ayarsor->fetch(PDO::FETCH_ASSOC);
              <div class="clearfix"></div>
              <br />
              <div>
-              <h1><?php echo $ayarcek['ayar_title'] ?></h1>
-              <p>Copyright © 2019 <?php echo $ayarcek['ayar_title'] ?></p>
+              <p>Copyright © 2019 <?php echo $ayarcek['ayar_title']; ?></p>
             </div>
           </div>
         </form>

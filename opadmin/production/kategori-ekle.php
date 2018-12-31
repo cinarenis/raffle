@@ -5,8 +5,8 @@ $kategorisor->execute(array(
   'id' => $_GET['kategori_id']
 ));
 $kategoricek=$kategorisor->fetch(PDO::FETCH_ASSOC);
-
 ?>
+
 <!-- page content -->
 <div class="right_col" role="main">
   <div class="">
@@ -73,6 +73,7 @@ $kategoricek=$kategorisor->fetch(PDO::FETCH_ASSOC);
   </div>
 </div>
 <!-- /page content -->
+
 <?php 
 include 'footer.php';
 ?>

@@ -33,21 +33,21 @@ include'header.php';
                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="ayar_analystic">Analystic 
                 </label>
                 <div class="col-md-6 col-sm-6 col-xs-12">
-                  <input type="text" id="ayar_analystic" name="ayar_analystic" value="<?php echo $ayarcek['ayar_analystic'] ?>" class="form-control col-md-7 col-xs-12">
+                  <input type="text" id="ayar_analystic" name="ayar_analystic" value="<?php echo $ayarcek['ayar_analystic']; ?>" class="form-control col-md-7 col-xs-12">
                 </div>
               </div>
               <div class="form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="ayar_maps">Maps 
                 </label>
                 <div class="col-md-6 col-sm-6 col-xs-12">
-                  <input type="text" id="ayar_maps" name="ayar_maps" value="<?php echo $ayarcek['ayar_maps'] ?>" class="form-control col-md-7 col-xs-12">
+                  <input type="text" id="ayar_maps" name="ayar_maps" value="<?php echo $ayarcek['ayar_maps']; ?>" class="form-control col-md-7 col-xs-12">
                 </div>
               </div>
               <div class="form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="ayar_zopim">Zopim 
                 </label>
                 <div class="col-md-6 col-sm-6 col-xs-12">
-                  <input type="text" id="ayar_zopim" name="ayar_zopim" value="<?php echo $ayarcek['ayar_zopim'] ?>" class="form-control col-md-7 col-xs-12">
+                  <input type="text" id="ayar_zopim" name="ayar_zopim" value="<?php echo $ayarcek['ayar_zopim']; ?>" class="form-control col-md-7 col-xs-12">
                 </div>
               </div>
               <div class="ln_solid"></div>

@@ -1,6 +1,7 @@
 <?php 
 include'header.php';
 ?>
+
 <!-- page content -->
 <div class="right_col" role="main">
   <div class="">
@@ -33,28 +34,28 @@ include'header.php';
                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="ayar_facebook">Facebook 
                 </label>
                 <div class="col-md-6 col-sm-6 col-xs-12">
-                  <input type="text" id="ayar_facebook" name="ayar_facebook" value="<?php echo $ayarcek['ayar_facebook'] ?>" class="form-control col-md-7 col-xs-12">
+                  <input type="text" id="ayar_facebook" name="ayar_facebook" value="<?php echo $ayarcek['ayar_facebook']; ?>" class="form-control col-md-7 col-xs-12">
                 </div>
               </div>
               <div class="form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="ayar_twitter">Twitter 
                 </label>
                 <div class="col-md-6 col-sm-6 col-xs-12">
-                  <input type="text" id="ayar_twitter" name="ayar_twitter" value="<?php echo $ayarcek['ayar_twitter'] ?>" class="form-control col-md-7 col-xs-12">
+                  <input type="text" id="ayar_twitter" name="ayar_twitter" value="<?php echo $ayarcek['ayar_twitter']; ?>" class="form-control col-md-7 col-xs-12">
                 </div>
               </div>
               <div class="form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="ayar_google">Google 
                 </label>
                 <div class="col-md-6 col-sm-6 col-xs-12">
-                  <input type="text" id="ayar_google" name="ayar_google" value="<?php echo $ayarcek['ayar_google'] ?>" class="form-control col-md-7 col-xs-12">
+                  <input type="text" id="ayar_google" name="ayar_google" value="<?php echo $ayarcek['ayar_google']; ?>" class="form-control col-md-7 col-xs-12">
                 </div>
               </div>
               <div class="form-group">
                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="ayar_youtube">Youtube 
                 </label>
                 <div class="col-md-6 col-sm-6 col-xs-12">
-                  <input type="text" id="ayar_youtube" name="ayar_youtube" value="<?php echo $ayarcek['ayar_youtube'] ?>" class="form-control col-md-7 col-xs-12">
+                  <input type="text" id="ayar_youtube" name="ayar_youtube" value="<?php echo $ayarcek['ayar_youtube']; ?>" class="form-control col-md-7 col-xs-12">
                 </div>
               </div>
               <div class="ln_solid"></div>
@@ -71,6 +72,7 @@ include'header.php';
   </div>
 </div>
 <!-- /page content -->
+
 <?php 
 include 'footer.php';
 ?>
